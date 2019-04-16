@@ -1,0 +1,19 @@
+{
+  "name": "javascript-oop",
+  "version": "1.0.0",
+  "description": "JavaScript Prototypal Inheritance",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josemak25/Javascript-OOP.git"
+  },
+  "author": "Amakiri Joseph Lucky",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/josemak25/Javascript-OOP/issues"
+  },
+  "homepage": "https://github.com/josemak25/Javascript-OOP#readme"
+}
