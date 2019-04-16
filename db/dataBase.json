@@ -1,4 +1,17 @@
 {
-  "userDATABASE": [],
+  "userDATABASE": [
+    {
+      "name": "Andy Doe",
+      "email": "Andyvg@gmail.com",
+      "password": "sword32fish",
+      "user_id": 1
+    },
+    {
+      "name": "Andy Doe",
+      "email": "Andyg@gmail.com",
+      "password": "sword32fish",
+      "user_id": 2
+    }
+  ],
   "adminDATABASE": []
 }
