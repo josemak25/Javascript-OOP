@@ -1,12 +1,18 @@
-const memberClass = require("./memberClass");
+const fsReadAndWrite = require("./fs");
 
-//CREATING THE USERCLASS CONSTRUCTOR
 function User(name, email, password) {
-  memberClass.call(this, name, email, password);
+  (this.name = name), (this.email = email), (this.password = password);
+  this.user_id = null;
+
+  const userData = this;
+
+  const dataBase = {
+    userDATABASE: "userDATABASE",
+    adminDATABASE: "adminDATABASE"
+  };
+
+  userData.constructor === User
+    ? fsReadAndWrite(userData, dataBase.userDATABASE)
+    : fsReadAndWrite(userData, dataBase.adminDATABASE);
 }
-
-//SETTING THE USERCLASS A SUBCLASS OF MEMBERCLASS
-User.prototype = Object.create(memberClass.prototype);
-User.prototype.constructor = User;
-
-const joe = new User("meme Ken", "meme@gmail.com", "swordfish");
+module.exports = User;

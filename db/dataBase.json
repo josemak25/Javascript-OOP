@@ -1,4 +1,61 @@
 {
-  "userDATABASE": [],
-  "adminDATABASE": []
+  "userDATABASE": [
+    {
+      "name": "Andy Doe",
+      "email": "Anbydsbr@gmail.com",
+      "password": "sword32fish",
+      "user_id": 1
+    },
+    {
+      "name": "Andy Doe",
+      "email": "Anbydswbr@gmail.com",
+      "password": "sword32fish",
+      "user_id": 2
+    },
+    {
+      "name": "Andy Doe",
+      "email": "Anbydsdbr@gmail.com",
+      "password": "sword32fish",
+      "user_id": 3
+    },
+    {
+      "name": "Andy Doe",
+      "email": "Anbydsfbr@gmail.com",
+      "password": "sword32fish",
+      "user_id": 4
+    },
+    {
+      "name": "Andy Doe",
+      "email": "Anbydscbr@gmail.com",
+      "password": "sword32fish",
+      "user_id": 5
+    }
+  ],
+
+  "adminDATABASE": [
+    {
+      "name": "Andy Doe",
+      "email": "Anbyxsbr@gmail.com",
+      "password": "sword32fish",
+      "user_id": 1
+    },
+    {
+      "name": "Andy Doe",
+      "email": "Anbydssbr@gmail.com",
+      "password": "sword32fish",
+      "user_id": 2
+    },
+    {
+      "name": "Andy Doe",
+      "email": "Anbydcsbr@gmail.com",
+      "password": "sword32fish",
+      "user_id": 3
+    },
+    {
+      "name": "Andy Doe",
+      "email": "Anbydvfsbr@gmail.com",
+      "password": "sword32fish",
+      "user_id": 4
+    }
+  ]
 }
