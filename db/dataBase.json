@@ -1,4 +1,10 @@
 {
-  "userDATABASE": [],
+  "userDATABASE": [
+    {
+      "name": "meme Ken",
+      "email": "meme@gmail.com",
+      "password": "swordfish"
+    }
+  ],
   "adminDATABASE": []
 }
