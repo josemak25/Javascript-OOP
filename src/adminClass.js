@@ -9,4 +9,16 @@ function Admin(name, email, password) {
 Admin.prototype = Object.create(User.prototype);
 Admin.prototype.constructor = Admin;
 
-const andy = new Admin("Andy Doe", "Andydddcg@gmail.com", "sword32fish");
+Admin.prototype.readAllUsers = () => {
+  console.log("this are all your user datas");
+};
+
+Admin.prototype.deleteUser = user_id => {
+  console.log("user delete succesfully");
+};
+
+Admin.prototype.deleteAllUsers = () => {
+  console.log("all users are deleted");
+};
+
+const andy = new User("Andy Doe", "Andydddcg@gmail.com", "sword32fish");

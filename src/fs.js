@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-function fsReadAndWrite(data, dbPath) {
+function createNewUser(data, dbPath) {
   // ADDING EVERY USER CREATED TO DATAASE
   const url = fs.readFileSync("./db/dataBase.json", "utf8");
   const dataBase = JSON.parse(url);
@@ -28,4 +28,4 @@ function fsReadAndWrite(data, dbPath) {
   return console.log("user account created succesfully");
 }
 
-module.exports = fsReadAndWrite;
+module.exports = createNewUser;
