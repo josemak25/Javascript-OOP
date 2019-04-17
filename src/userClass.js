@@ -1,4 +1,4 @@
-const fsReadAndWrite = require("./fs");
+const createNewUser = require("./fs");
 
 function User(name, email, password) {
   (this.name = name), (this.email = email), (this.password = password);
@@ -9,6 +9,15 @@ function User(name, email, password) {
 
   if (userData.constructor === User) userData.is_admin = false;
 
-  fsReadAndWrite(userData, "userDATABASE");
+  createNewUser(userData, "userDATABASE");
 }
+
+User.prototype.readUserById = user_id => {
+  console.log("this is the user object");
+};
+
+User.prototype.updateUserDetail = (name, email, password) => {
+  console.log("user details updated");
+};
+
 module.exports = User;
