@@ -3,16 +3,12 @@ const fsReadAndWrite = require("./fs");
 function User(name, email, password) {
   (this.name = name), (this.email = email), (this.password = password);
   this.user_id = null;
+  this.is_admin = true;
 
   const userData = this;
 
-  const dataBase = {
-    userDATABASE: "userDATABASE",
-    adminDATABASE: "adminDATABASE"
-  };
+  if (userData.constructor === User) userData.is_admin = false;
 
-  userData.constructor === User
-    ? fsReadAndWrite(userData, dataBase.userDATABASE)
-    : fsReadAndWrite(userData, dataBase.adminDATABASE);
+  fsReadAndWrite(userData, "userDATABASE");
 }
 module.exports = User;

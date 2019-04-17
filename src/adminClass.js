@@ -9,4 +9,4 @@ function Admin(name, email, password) {
 Admin.prototype = Object.create(User.prototype);
 Admin.prototype.constructor = Admin;
 
-const andy = new User("Andy Doe", "Andyg@gmail.com", "sword32fish");
+const andy = new Admin("Andy Doe", "Andydddcg@gmail.com", "sword32fish");
