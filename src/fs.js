@@ -1,6 +1,7 @@
 const fs = require("fs");
 
 const url = fs.readFileSync("./db/dataBase.json", "utf8");
+
 const dataBase = JSON.parse(url);
 
 function createNewUser(data, dbPath) {
@@ -21,26 +22,44 @@ function createNewUser(data, dbPath) {
   dataBase[dbPath].push(data);
 
   //WRITE BACK OUR DATA TO DATABSE
-  fs.writeFileSync(
+  writeBackTodb();
+  return console.log("user account created succesfully");
+}
+
+function writeBackTodb() {
+  return fs.writeFileSync(
     "./db/dataBase.json",
     JSON.stringify(dataBase, null, 3),
     "utf8"
   );
-  return console.log("user account created succesfully");
 }
 
 //USER PROTOTYPE FUNCTIONS
 function readSingleUser(userID) {
-  dataBase.userDATABASE.filter(users => {
-    if (users.user_id === userID) return console.log(users);
-  });
+  const user = dataBase.userDATABASE.filter(user => user.user_id === userID);
+  user.length < 1 ? console.log("FALSE, user not found") : console.log(user[0]);
 }
 
 //ADMIN PROTOTYPE FUNCTIONS
 function readAllUser() {
-  dataBase.userDATABASE.filter(users => {
-    return console.log(users);
-  });
+  dataBase.userDATABASE.filter(users => console.log(users));
 }
 
-module.exports = { createNewUser, readSingleUser, readAllUser };
+function searchUser(username) {
+  const user = dataBase.userDATABASE.filter(user => user.name === username);
+  user.length < 1 ? console.log("FALSE, user not found") : console.log(user[0]);
+}
+
+function deleteAllUser() {
+  dataBase.userDATABASE = [];
+  writeBackTodb();
+  return console.log("database deleted succesfully");
+}
+
+module.exports = {
+  createNewUser,
+  readSingleUser,
+  readAllUser,
+  searchUser,
+  deleteAllUser
+};

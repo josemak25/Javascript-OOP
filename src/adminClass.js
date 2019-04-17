@@ -1,5 +1,5 @@
 const User = require("./UserClass");
-const { readAllUser } = require("./fs");
+const { readAllUser, deleteAllUser } = require("./fs");
 
 //CREATING THE USERCLASS CONSTRUCTOR
 function Admin(name, email, password) {
@@ -19,7 +19,7 @@ Admin.prototype.deleteUser = user_id => {
 };
 
 Admin.prototype.deleteAllUsers = () => {
-  console.log("all users are deleted");
+  deleteAllUser();
 };
 
 module.exports = Admin;
