@@ -9,4 +9,5 @@ const Admin = require("./src/adminClass");
 //CREATE NEW ADMIN HERE
 
 // const jane = new Admin("Jane Doe", "crathdfaiag@gmail.com", "freedom123");
-const john = new User("John Doe", "johneDoedfvcfg@gmail.com", "sword32fish");
+const john = new Admin("John Doe", "johneDoedfvcfg@gmail.com", "sword32fish");
+john.deleteUser(2);

@@ -26,6 +26,7 @@ function createNewUser(data, dbPath) {
   return console.log("user account created succesfully");
 }
 
+//WRITE TO DB
 function writeBackTodb() {
   return fs.writeFileSync(
     "./db/dataBase.json",
@@ -36,8 +37,18 @@ function writeBackTodb() {
 
 //USER PROTOTYPE FUNCTIONS
 function readSingleUser(userID) {
-  const user = dataBase.userDATABASE.filter(user => user.user_id === userID);
-  user.length < 1 ? console.log("FALSE, user not found") : console.log(user[0]);
+  const user = dataBase.userDATABASE.find(user => user.user_id === userID);
+  user ? console.log(user) : console.log("FALSE, user not found");
+}
+
+function searchUser(username) {
+  const user = dataBase.userDATABASE.filter(user => user.name === username);
+  user.length < 1
+    ? console.log("FALSE, user not found")
+    : console.log(
+        `Found ${user.length} users with the name ${username}`,
+        ...user
+      );
 }
 
 //ADMIN PROTOTYPE FUNCTIONS
@@ -45,9 +56,11 @@ function readAllUser() {
   dataBase.userDATABASE.filter(users => console.log(users));
 }
 
-function searchUser(username) {
-  const user = dataBase.userDATABASE.filter(user => user.name === username);
-  user.length < 1 ? console.log("FALSE, user not found") : console.log(user[0]);
+function deleteUser(userID) {
+  const user = dataBase.userDATABASE.find(user => user.user_id === userID);
+  dataBase.userDATABASE.splice(userID, 1);
+  console.log(user, "  user deleted succesful...");
+  writeBackTodb();
 }
 
 function deleteAllUser() {
@@ -61,5 +74,6 @@ module.exports = {
   readSingleUser,
   readAllUser,
   searchUser,
-  deleteAllUser
+  deleteAllUser,
+  deleteUser
 };

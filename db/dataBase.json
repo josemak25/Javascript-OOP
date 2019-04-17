@@ -1,18 +1,25 @@
 {
-  "userDATABASE": [
-    {
-      "name": "Andy Doe",
-      "email": "Andyddcg@gmail.com",
-      "password": "sword32fish",
-      "user_id": 1,
-      "is_admin": false
-    },
-    {
-      "name": "Andy Doe",
-      "email": "Andydddcg@gmail.com",
-      "password": "sword32fish",
-      "user_id": 2,
-      "is_admin": true
-    }
-  ]
+   "userDATABASE": [
+      {
+         "name": "Andy Doe",
+         "email": "Andyddcg@gmail.com",
+         "password": "sword32fish",
+         "user_id": 1,
+         "is_admin": false
+      },
+      {
+         "name": "Andy Doe",
+         "email": "Andydddcg@gmail.com",
+         "password": "sword32fish",
+         "user_id": 2,
+         "is_admin": true
+      },
+      {
+         "name": "John Doe",
+         "email": "johneDoedfvcfg@gmail.com",
+         "password": "sword32fish",
+         "user_id": 3,
+         "is_admin": true
+      }
+   ]
 }
