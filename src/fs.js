@@ -1,9 +1,10 @@
 const fs = require("fs");
 
+const url = fs.readFileSync("./db/dataBase.json", "utf8");
+const dataBase = JSON.parse(url);
+
 function createNewUser(data, dbPath) {
   // ADDING EVERY USER CREATED TO DATAASE
-  const url = fs.readFileSync("./db/dataBase.json", "utf8");
-  const dataBase = JSON.parse(url);
 
   // CHECK FOR USER EMAIL IN DATABASE TO KNOW IF SAME USER EXITS BEFORE ADDING USER TO DATABSE
   for (users of dataBase[dbPath]) {
@@ -28,4 +29,18 @@ function createNewUser(data, dbPath) {
   return console.log("user account created succesfully");
 }
 
-module.exports = createNewUser;
+//USER PROTOTYPE FUNCTIONS
+function readSingleUser(userID) {
+  dataBase.userDATABASE.filter(users => {
+    if (users.user_id === userID) return console.log(users);
+  });
+}
+
+//ADMIN PROTOTYPE FUNCTIONS
+function readAllUser() {
+  dataBase.userDATABASE.filter(users => {
+    return console.log(users);
+  });
+}
+
+module.exports = { createNewUser, readSingleUser, readAllUser };
