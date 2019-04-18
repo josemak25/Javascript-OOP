@@ -1,4 +1,9 @@
-const { createNewUser, readSingleUser, searchUser } = require("./fs");
+const {
+  createNewUser,
+  readSingleUser,
+  searchUser,
+  updateUserDetail
+} = require("./fs");
 
 function User(name, email, password) {
   (this.name = name), (this.email = email), (this.password = password);
@@ -16,8 +21,8 @@ User.prototype.readUserById = user_id => {
   readSingleUser(user_id);
 };
 
-User.prototype.updateUserDetail = (name, email, password) => {
-  console.log("user details updated");
+User.prototype.updateUserDetail = (id, name, email, password) => {
+  updateUserDetail(id, name, email, password);
 };
 
 User.prototype.searchUser = username => {

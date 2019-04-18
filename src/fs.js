@@ -30,19 +30,19 @@ function createNewUser(data, dbPath) {
 function writeBackTodb() {
   return fs.writeFileSync(
     "./db/dataBase.json",
-    JSON.stringify(dataBase, null, 3),
+    JSON.stringify(dataBase, null, 2),
     "utf8"
   );
 }
 
 //USER PROTOTYPE FUNCTIONS
 function readSingleUser(userID) {
-  const user = dataBase.userDATABASE.find(user => user.user_id === userID);
+  const user = dataBase.userDATABASE.find(user => user.user_id == userID);
   user ? console.log(user) : console.log("FALSE, user not found");
 }
 
 function searchUser(username) {
-  const user = dataBase.userDATABASE.filter(user => user.name === username);
+  const user = dataBase.userDATABASE.filter(user => user.name == username);
   user.length < 1
     ? console.log("FALSE, user not found")
     : console.log(
@@ -51,15 +51,29 @@ function searchUser(username) {
       );
 }
 
+function updateUserDetail(id, name, email, password) {
+  const user = dataBase.userDATABASE.find(user => user.user_id == id);
+
+  if (user.name == name && user.email == email && user.password == password) {
+    return console.log("No changes where made..");
+  } else {
+    user.name = name;
+    user.email = email;
+    user.password = password;
+  }
+  writeBackTodb();
+  console.log("User updated succesfully");
+}
+
 //ADMIN PROTOTYPE FUNCTIONS
 function readAllUser() {
   dataBase.userDATABASE.filter(users => console.log(users));
 }
 
 function deleteUser(userID) {
-  const user = dataBase.userDATABASE.find(user => user.user_id === userID);
+  const user = dataBase.userDATABASE.find(user => user.user_id == userID);
   dataBase.userDATABASE.splice(userID, 1);
-  console.log(user, "  user deleted succesful...");
+  console.log(user.name, "  user deleted succesful...");
   writeBackTodb();
 }
 
@@ -75,5 +89,6 @@ module.exports = {
   readAllUser,
   searchUser,
   deleteAllUser,
-  deleteUser
+  deleteUser,
+  updateUserDetail
 };

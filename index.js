@@ -10,4 +10,4 @@ const Admin = require("./src/adminClass");
 
 // const jane = new Admin("Jane Doe", "crathdfaiag@gmail.com", "freedom123");
 const john = new Admin("John Doe", "johneDoedfvcfg@gmail.com", "sword32fish");
-john.deleteUser(2);
+john.deleteUser("2");
