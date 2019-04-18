@@ -13,20 +13,25 @@ function writeBackTodb() {
   );
 }
 
-function createNewUser(data, dbPath) {
-  // ADDING EVERY USER CREATED TO DATAASE
-
-  // CHECK FOR USER EMAIL IN DATABASE TO KNOW IF SAME USER EXITS BEFORE ADDING USER TO DATABSE
-  for (users of dataBase[dbPath]) {
-    if (users.email === data.email) return console.log("User already exits");
+function addToDataBase(data, dbPath) {
+  // CHECK FOR DATABSE PATH BEFORE ADDING TO DATABSE
+  if (dbPath === "userDATABASE") {
+    dataBase.userDATABASE.push(data);
+    console.log("user account created succesfully");
+  } else {
+    dataBase.orderDATABASE.push(data);
+    console.log("orders succesfully made");
   }
-
-  //CHECK WHEN ALL IS DONE PUSH USER TO DATABASE
-  dataBase[dbPath].push(data);
 
   //WRITE BACK OUR DATA TO DATABSE
   writeBackTodb();
-  return console.log("user account created succesfully");
+  return;
+}
+
+// UPDATING USER DETAILS ON DB
+function getUserId(email) {
+  const user = dataBase.userDATABASE.find(user => user.email == email);
+  return user.user_id;
 }
 
 //USER PROTOTYPE FUNCTIONS
@@ -46,18 +51,16 @@ function searchUser(username) {
 }
 
 function updateUser(name, email, password, id) {
-  console.log("user id ", id);
-  let user = dataBase.userDATABASE.find(user => user.user_id == id);
-  // console.log(user);
-  // if (user.name == name && user.email == email && user.password == password) {
-  //   return console.log("No changes where made..");
-  // } else {
-  //   user.name = name;
-  //   user.email = email;
-  //   user.password = password;
-  // }
-  // writeBackTodb();
-  // console.log("User updated succesfully");
+  const user = dataBase.userDATABASE.find(user => user.user_id == id);
+  if (user.name == name && user.email == email && user.password == password) {
+    return console.log("No changes where made..");
+  } else {
+    user.name = name;
+    user.email = email;
+    user.password = password;
+  }
+  writeBackTodb();
+  console.log("User updated succesfully");
 }
 
 //ADMIN PROTOTYPE FUNCTIONS
@@ -79,11 +82,12 @@ function deleteAllUser() {
 }
 
 module.exports = {
-  createNewUser,
+  addToDataBase,
   readSingleUser,
   readAllUser,
   searchUser,
   deleteAllUser,
   deleteUser,
-  updateUser
+  updateUser,
+  getUserId
 };
