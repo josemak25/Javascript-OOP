@@ -1,5 +1,6 @@
 const User = require("./src/userClass");
 const Admin = require("./src/adminClass");
+const Orders = require("./src/oderClass");
 
 //CREATE NEW USER HERE
 
@@ -9,14 +10,14 @@ const Admin = require("./src/adminClass");
 //CREATE NEW ADMIN HERE
 
 // const jane = new Admin("Jane Doe", "crathdfaiag@gmail.com", "freedom123");
-let james = new User("John", "johnfg@gmail.com", "sword32fish");
-let john = new User(" Doe", "johneDoefg@gmail.com", "s2fish");
+// let james = new Admin("John", "johnfg@gmail.com", "sword32fish");
+let john = new Orders("banana", "johneDyuoedfvcfg@gmail.com", "sword32fish");
 
-console.log(john.user_id);
+// console.log(john.user_id);
 
-john.readUserById(this.user_id);
+// john.readUserById(this.user_id);
 
-// james.updateUserDetail("John Doe", "johneDyuoedfvcfg@gmail.com", "sword32fish");
+// john.updateUserDetail("John Doe", "johneg@gmail.com", "sword32fish");
 // john.updateUserDetail("John Doe", "johneDoedjhgffvcfg@gmail.com", "sword32fish")
 // john.updateUserDetail(john.user_id);
 // console.log(jane.user_id);

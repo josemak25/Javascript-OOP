@@ -1,11 +1,13 @@
-function Orders(name, email, password) {
-  (this.name = name), (this.email = email), (this.password = password);
-  this.user_id = null;
-  this.order_id = null;
+const { addToDataBase, getUserId } = require("./fs_rw");
+
+function Orders(...products) {
+  this.user_id = getUserId(this.email);
+  this.order_id = 1;
   this.timeOfOrder = productDate();
   this.dateOfOrder = productDate("date");
+  this.orders = products;
 
-  const productDate = param => {
+  function productDate(param) {
     const datePicker = new Date();
     if (param == "date") {
       const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][
@@ -28,13 +30,13 @@ function Orders(name, email, password) {
       datePicker.getFullYear();
       return `${weekday}-${months}-${datePicker.getFullYear()}`;
     } else {
-      return `${datePicker.getHours()}-${datePicker.getMinutes()}-${datePicker.getSeconds()}`;
+      return `${datePicker.getHours()}-${datePicker.getMinutes()}-${datePicker.getSeconds()} GMT+0100`;
     }
-  };
+  }
 
   const orderData = this;
 
-  createNewUser(orderData, "orderDATABASE");
+  addToDataBase(orderData, "orderDATABASE");
 }
 
 module.exports = Orders;

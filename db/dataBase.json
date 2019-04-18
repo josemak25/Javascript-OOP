@@ -12,14 +12,7 @@
       "email": "johnfg@gmail.com",
       "password": "sword32fish",
       "user_id": 2,
-      "is_admin": false
-    },
-    {
-      "name": " Doe",
-      "email": "johneDoefg@gmail.com",
-      "password": "s2fish",
-      "user_id": 3,
-      "is_admin": false
+      "is_admin": true
     }
   ],
   "orderDATABASE": []
