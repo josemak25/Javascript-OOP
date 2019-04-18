@@ -4,6 +4,15 @@ const url = fs.readFileSync("./db/dataBase.json", "utf8");
 
 const dataBase = JSON.parse(url);
 
+//WRITE TO DB
+function writeBackTodb() {
+  return fs.writeFileSync(
+    "./db/dataBase.json",
+    JSON.stringify(dataBase, null, 2),
+    "utf8"
+  );
+}
+
 function createNewUser(data, dbPath) {
   // ADDING EVERY USER CREATED TO DATAASE
 
@@ -12,27 +21,12 @@ function createNewUser(data, dbPath) {
     if (users.email === data.email) return console.log("User already exits");
   }
 
-  // CHECK FOR USER ID IN DATABASE TO INCREMENT INCOMING USER ID
-  dataBase[dbPath].length < 1
-    ? (data.user_id = 1)
-    : (data.user_id =
-        dataBase[dbPath][dataBase[dbPath].length - 1].user_id + 1);
-
   //CHECK WHEN ALL IS DONE PUSH USER TO DATABASE
   dataBase[dbPath].push(data);
 
   //WRITE BACK OUR DATA TO DATABSE
   writeBackTodb();
   return console.log("user account created succesfully");
-}
-
-//WRITE TO DB
-function writeBackTodb() {
-  return fs.writeFileSync(
-    "./db/dataBase.json",
-    JSON.stringify(dataBase, null, 2),
-    "utf8"
-  );
 }
 
 //USER PROTOTYPE FUNCTIONS
@@ -51,18 +45,19 @@ function searchUser(username) {
       );
 }
 
-function updateUserDetail(id, name, email, password) {
-  const user = dataBase.userDATABASE.find(user => user.user_id == id);
-
-  if (user.name == name && user.email == email && user.password == password) {
-    return console.log("No changes where made..");
-  } else {
-    user.name = name;
-    user.email = email;
-    user.password = password;
-  }
-  writeBackTodb();
-  console.log("User updated succesfully");
+function updateUser(name, email, password, id) {
+  console.log("user id ", id);
+  let user = dataBase.userDATABASE.find(user => user.user_id == id);
+  // console.log(user);
+  // if (user.name == name && user.email == email && user.password == password) {
+  //   return console.log("No changes where made..");
+  // } else {
+  //   user.name = name;
+  //   user.email = email;
+  //   user.password = password;
+  // }
+  // writeBackTodb();
+  // console.log("User updated succesfully");
 }
 
 //ADMIN PROTOTYPE FUNCTIONS
@@ -90,5 +85,5 @@ module.exports = {
   searchUser,
   deleteAllUser,
   deleteUser,
-  updateUserDetail
+  updateUser
 };

@@ -9,5 +9,16 @@ const Admin = require("./src/adminClass");
 //CREATE NEW ADMIN HERE
 
 // const jane = new Admin("Jane Doe", "crathdfaiag@gmail.com", "freedom123");
-const john = new Admin("John Doe", "johneDoedfvcfg@gmail.com", "sword32fish");
-john.deleteUser("2");
+let james = new User("John", "johnfg@gmail.com", "sword32fish");
+let john = new User(" Doe", "johneDoefg@gmail.com", "s2fish");
+
+console.log(john.user_id);
+
+john.readUserById(this.user_id);
+
+// james.updateUserDetail("John Doe", "johneDyuoedfvcfg@gmail.com", "sword32fish");
+// john.updateUserDetail("John Doe", "johneDoedjhgffvcfg@gmail.com", "sword32fish")
+// john.updateUserDetail(john.user_id);
+// console.log(jane.user_id);
+// console.log(james.user_id);
+// console.log(john.user_id);

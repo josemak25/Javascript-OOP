@@ -1,5 +1,5 @@
 const User = require("./UserClass");
-const { readAllUser, deleteAllUser, deleteUser } = require("./fs");
+const { readAllUser, deleteAllUser, deleteUser } = require("./fs_rw");
 
 //CREATING THE USERCLASS CONSTRUCTOR
 function Admin(name, email, password) {
