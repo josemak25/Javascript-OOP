@@ -1,10 +1,11 @@
 const fs = require("fs");
 
 const {
-  createNewUser,
+  addToDataBase,
   readSingleUser,
   searchUser,
-  updateUser
+  updateUser,
+  getUserId
 } = require("./fs_rw");
 
 function User(name, email, password) {
@@ -26,9 +27,13 @@ function User(name, email, password) {
     }
   }
 
+  for (users of dataBase[dbPath]) {
+    if (users.email === data.email) return console.log("User already exits");
+  }
+
   if (userData.constructor === User) userData.is_admin = false;
 
-  createNewUser(userData, "userDATABASE");
+  addToDataBase(userData, "userDATABASE");
 }
 
 User.prototype.readUserById = user_id => {
@@ -36,7 +41,8 @@ User.prototype.readUserById = user_id => {
 };
 
 User.prototype.updateUserDetail = function(name, email, password) {
-  updateUser(name, email, password);
+  const user_id = getUserId(this.email);
+  updateUser(name, email, password, (id = user_id));
 };
 
 User.prototype.searchUser = username => {
