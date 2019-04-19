@@ -17,7 +17,7 @@ function User(name, email, password) {
   (this.name = name), (this.email = email), (this.password = password);
   this.user_id = generateUserId();
   this.is_admin = true;
-  let userData = this;
+  const userData = this;
 
   function generateUserId() {
     if (dataBase.userDATABASE.length < 1) {
@@ -27,6 +27,20 @@ function User(name, email, password) {
         dataBase.userDATABASE[dataBase.userDATABASE.length - 1].user_id + 1
       );
     }
+  }
+
+  if (
+    typeof userData.name !== "string" ||
+    typeof userData.email !== "string" ||
+    typeof userData.password !== "string"
+  ) {
+    return console.log("Only string fields are allowed");
+  } else if (
+    userData.name == "" ||
+    userData.email == "" ||
+    userData.password == ""
+  ) {
+    return console.log("All fields are required");
   }
 
   for (users of dataBase.userDATABASE) {
