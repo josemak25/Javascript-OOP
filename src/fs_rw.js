@@ -8,7 +8,7 @@ const dataBase = JSON.parse(url);
 function writeBackTodb() {
   return fs.writeFileSync(
     "./db/dataBase.json",
-    JSON.stringify(dataBase, null, 4),
+    JSON.stringify(dataBase, null, 3),
     "utf8"
   );
 }
@@ -25,7 +25,6 @@ function addToDataBase(data, dbPath) {
 
   //WRITE BACK OUR DATA TO DATABSE
   writeBackTodb();
-  return;
 }
 
 // UPDATING USER DETAILS ON DB
@@ -59,8 +58,8 @@ function updateUser(name, email, password, id) {
     user.email = email;
     user.password = password;
   }
-  writeBackTodb();
   console.log("User updated succesfully");
+  writeBackTodb();
 }
 
 //ADMIN PROTOTYPE FUNCTIONS
@@ -70,15 +69,18 @@ function readAllUser() {
 
 function deleteUser(userID) {
   const user = dataBase.userDATABASE.find(user => user.user_id == userID);
-  dataBase.userDATABASE.splice(userID, 1);
-  console.log(user.name, "  user deleted succesful...");
+  console.log(user);
+  dataBase.userDATABASE.splice(userID - 1, 1);
+  console.log(dataBase.userDATABASE);
+  console.log("User deleted succesful...");
   writeBackTodb();
 }
 
 function deleteAllUser() {
   dataBase.userDATABASE = [];
+  console.log("database deleted succesfully");
   writeBackTodb();
-  return console.log("database deleted succesfully");
+  return;
 }
 
 //ORDER PROTOTYPE
@@ -92,6 +94,16 @@ function readSingleOrder(orderId) {
   order ? console.log(order) : console.log("FALSE, order not found");
 }
 
+function deleteOrder(orderId) {
+  const order = dataBase.orderDATABASE.find(order => order.order_id == orderId);
+  console.log(order);
+  dataBase.orderDATABASE.splice(orderId - 1, 1);
+  console.log(dataBase.orderDATABASE);
+  console.log("order deleted succesful...");
+  writeBackTodb();
+  // return;
+}
+
 module.exports = {
   addToDataBase,
   readSingleUser,
@@ -102,5 +114,6 @@ module.exports = {
   updateUser,
   getUserId,
   readAllOrders,
-  readSingleOrder
+  readSingleOrder,
+  deleteOrder
 };

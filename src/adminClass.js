@@ -25,11 +25,15 @@ Admin.prototype.deleteAllUsers = () => {
 };
 
 Admin.prototype.readAllOrders = () => {
-  Orders.prototype.readAllOrders()
-}
+  Orders.prototype.readAllOrders();
+};
 
-Admin.prototype.readSingleOrder = (orderId) => {
-  Orders.prototype.readSingleOrder(orderId)
-}
+Admin.prototype.readSingleOrder = orderId => {
+  Orders.prototype.readSingleOrder(orderId);
+};
+
+Admin.prototype.deleteOrder = orderId => {
+  Orders.prototype.deleteOrder(orderId);
+};
 
 module.exports = Admin;

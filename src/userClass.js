@@ -39,7 +39,7 @@ function User(name, email, password) {
   addToDataBase(userData, "userDATABASE");
 }
 
-User.prototype.readUserById = user_id => {
+User.prototype.readUserById = function(user_id) {
   readSingleUser(user_id);
 };
 

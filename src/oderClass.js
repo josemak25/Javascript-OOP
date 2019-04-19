@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const { addToDataBase, readAllOrders, readSingleOrder } = require("./fs_rw");
+const { addToDataBase, readAllOrders, readSingleOrder, deleteOrder } = require("./fs_rw");
 
 function Orders(products, id) {
   const url = fs.readFileSync("./db/dataBase.json", "utf8");
@@ -65,4 +65,7 @@ Orders.prototype.readSingleOrder = orderId => {
   readSingleOrder(orderId);
 };
 
+Orders.prototype.deleteOrder = orderId => {
+  deleteOrder(orderId);
+};
 module.exports = Orders;
