@@ -95,10 +95,18 @@ function readSingleOrder(orderId) {
 }
 
 function deleteOrder(orderId) {
-  const order = dataBase.orderDATABASE.find(order => order.order_id == orderId);
-  dataBase.orderDATABASE.splice(orderId - 1, 1);
-  console.log("order deleted succesful...");
-  writeBackTodb();
+  let deleteIndex = 0;
+  const order = dataBase.orderDATABASE.find((order, index) => {
+    if (order.order_id == orderId) {
+      deleteIndex = index;
+      return order;
+    }
+  });
+  if (order) {
+    dataBase.orderDATABASE.splice(deleteIndex, 1);
+    console.log("order deleted succesful...");
+    writeBackTodb();
+  } else return console.log("FALSE, order not found");
 }
 
 function deleteAllOrder() {
