@@ -78,7 +78,7 @@ function deleteUser(userID) {
 
 function deleteAllUser() {
   dataBase.userDATABASE = [];
-  console.log("database deleted succesfully");
+  console.log("user database deleted succesfully");
   writeBackTodb();
   return;
 }
@@ -104,6 +104,12 @@ function deleteOrder(orderId) {
   // return;
 }
 
+function deleteAllOrder() {
+  dataBase.orderDATABASE = [];
+  console.log("order database deleted succesfully");
+  writeBackTodb();
+}
+
 module.exports = {
   addToDataBase,
   readSingleUser,
@@ -115,5 +121,6 @@ module.exports = {
   getUserId,
   readAllOrders,
   readSingleOrder,
-  deleteOrder
+  deleteOrder,
+  deleteAllOrder
 };

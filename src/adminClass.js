@@ -36,4 +36,8 @@ Admin.prototype.deleteOrder = orderId => {
   Orders.prototype.deleteOrder(orderId);
 };
 
+Admin.prototype.deleteAllOrder = () => {
+  Orders.prototype.deleteAllOrder();
+};
+
 module.exports = Admin;
