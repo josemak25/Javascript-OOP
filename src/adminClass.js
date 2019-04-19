@@ -1,5 +1,7 @@
 const User = require("./UserClass");
-const { readAllUser, deleteAllUser } = require("./fs");
+const Orders = require("./oderClass");
+
+const { readAllUser, deleteAllUser, deleteUser } = require("./fs_rw");
 
 //CREATING THE USERCLASS CONSTRUCTOR
 function Admin(name, email, password) {
@@ -15,11 +17,30 @@ Admin.prototype.readAllUsers = () => {
 };
 
 Admin.prototype.deleteUser = user_id => {
-  console.log("user delete succesfully");
+  deleteUser(user_id);
 };
 
 Admin.prototype.deleteAllUsers = () => {
   deleteAllUser();
 };
 
+Admin.prototype.readAllOrders = () => {
+  Orders.prototype.readAllOrders();
+};
+
+Admin.prototype.readSingleOrder = orderId => {
+  Orders.prototype.readSingleOrder(orderId);
+};
+
+Admin.prototype.deleteOrder = orderId => {
+  Orders.prototype.deleteOrder(orderId);
+};
+
+Admin.prototype.deleteAllOrder = () => {
+  Orders.prototype.deleteAllOrder();
+};
+
+User.prototype.updateOrder = function(prodToUpdate, newProduct, orderId) {
+  Orders.prototype.updateOrderDetails(prodToUpdate, newProduct, orderId);
+};
 module.exports = Admin;

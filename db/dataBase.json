@@ -1,18 +1,55 @@
 {
   "userDATABASE": [
     {
-      "name": "Andy Doe",
-      "email": "Andyddcg@gmail.com",
-      "password": "sword32fish",
+      "name": "Jane Doe",
+      "email": "crathdfaiag@gmail.com",
+      "password": "freedom123",
       "user_id": 1,
+      "is_admin": true
+    },
+    {
+      "name": "donald Doe",
+      "email": "cratrideag@gmail.com",
+      "password": "om123",
+      "user_id": 2,
+      "is_admin": true
+    },
+    {
+      "name": "success",
+      "email": "succesrg@gmail.com",
+      "password": "sw2fish",
+      "user_id": 3,
       "is_admin": false
     },
     {
-      "name": "Andy Doe",
-      "email": "Andydddcg@gmail.com",
-      "password": "sword32fish",
+      "name": "thankGod",
+      "email": "thankGodg@gmail.com",
+      "password": "sweden1234",
+      "user_id": 4,
+      "is_admin": false
+    }
+  ],
+  "orderDATABASE": [
+    {
+      "user_id": 1,
+      "order_id": 1,
+      "timeOfOrder": "8:22 AM",
+      "dateOfOrder": "Fri-Apr-2019",
+      "orders": ["banana", "rice", "iphone"]
+    },
+    {
       "user_id": 2,
-      "is_admin": true
+      "order_id": 2,
+      "timeOfOrder": "8:22 AM",
+      "dateOfOrder": "Fri-Apr-2019",
+      "orders": ["pancake sugar", "nokia", "beles"]
+    },
+    {
+      "user_id": 3,
+      "order_id": 3,
+      "timeOfOrder": "8:26 AM",
+      "dateOfOrder": "Fri-Apr-2019",
+      "orders": ["iphone", "infinx", "bed"]
     }
   ]
 }
