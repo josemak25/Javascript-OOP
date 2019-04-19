@@ -28,4 +28,8 @@ Admin.prototype.readAllOrders = () => {
   Orders.prototype.readAllOrders()
 }
 
+Admin.prototype.readSingleOrder = (orderId) => {
+  Orders.prototype.readSingleOrder(orderId)
+}
+
 module.exports = Admin;

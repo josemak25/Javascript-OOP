@@ -87,6 +87,11 @@ function readAllOrders() {
   dataBase.orderDATABASE.filter(orders => console.log(orders));
 }
 
+function readSingleOrder(orderId) {
+  const order = dataBase.orderDATABASE.find(order => order.order_id == orderId);
+  order ? console.log(order) : console.log("FALSE, order not found");
+}
+
 module.exports = {
   addToDataBase,
   readSingleUser,
@@ -96,5 +101,6 @@ module.exports = {
   deleteUser,
   updateUser,
   getUserId,
-  readAllOrders
+  readAllOrders,
+  readSingleOrder
 };

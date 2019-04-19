@@ -8,7 +8,7 @@ const jane = new Admin("donald Doe", "cratg@gmail.com", "om123");
 // const thankGod = new User("thankGod", "preyfyg@gmail.com", "sw2fish");
 // const grey = new User("grey", "grey123g@gmail.com", "sw2fish");
 
-jane.readAllOrders();
+jane.readSingleOrder(2);
 // success.makeNewOrder("banana", "rice", "iphone");
 // thankGod.makeNewOrder("banana", "rice", "iphone");
 // grey.makeNewOrder("banana", "rice", "iphone");
