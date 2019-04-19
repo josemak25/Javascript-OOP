@@ -8,7 +8,7 @@ const dataBase = JSON.parse(url);
 function writeBackTodb() {
   return fs.writeFileSync(
     "./db/dataBase.json",
-    JSON.stringify(dataBase, null, 2),
+    JSON.stringify(dataBase, null, 4),
     "utf8"
   );
 }

@@ -2,11 +2,10 @@ const fs = require("fs");
 
 const { addToDataBase } = require("./fs_rw");
 
-function Orders(...products) {
+function Orders(products, id) {
   const url = fs.readFileSync("./db/dataBase.json", "utf8");
   const dataBase = JSON.parse(url);
-
-  this.user_id = 1;
+  this.user_id = id;
   this.order_id = generateOrderId();
   this.timeOfOrder = productDate();
   this.dateOfOrder = productDate("date");
@@ -33,7 +32,7 @@ function Orders(...products) {
         "Dec"
       ][datePicker.getMonth()];
       datePicker.getFullYear();
-      return `${weekday}-${months}-${datePicker.getFullYear()}`;
+      return `${weekday} ${datePicker.getUTCDate()} ${months} ${datePicker.getFullYear()}`;
     } else {
       return `${datePicker.getHours()}:${datePicker.getMinutes()} AM`;
     }
@@ -53,5 +52,9 @@ function Orders(...products) {
 
   addToDataBase(orderData, "orderDATABASE");
 }
+
+Orders.prototype.createOrder = function(products) {
+  new Orders(products, id);
+};
 
 module.exports = Orders;

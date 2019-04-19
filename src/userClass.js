@@ -1,5 +1,7 @@
 const fs = require("fs");
 
+const Orders = require("./oderClass");
+
 const {
   addToDataBase,
   readSingleUser,
@@ -48,6 +50,11 @@ User.prototype.updateUserDetail = function(name, email, password) {
 
 User.prototype.searchUser = username => {
   searchUser(username);
+};
+
+User.prototype.makeNewOrder = function(...products) {
+  const user_id = getUserId(this.email);
+  Orders.prototype.createOrder(products, (id = user_id));
 };
 
 module.exports = User;
