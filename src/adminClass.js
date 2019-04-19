@@ -1,4 +1,6 @@
 const User = require("./UserClass");
+const Orders = require("./oderClass");
+
 const { readAllUser, deleteAllUser, deleteUser } = require("./fs_rw");
 
 //CREATING THE USERCLASS CONSTRUCTOR
@@ -21,5 +23,9 @@ Admin.prototype.deleteUser = user_id => {
 Admin.prototype.deleteAllUsers = () => {
   deleteAllUser();
 };
+
+Admin.prototype.readAllOrders = () => {
+  Orders.prototype.readAllOrders()
+}
 
 module.exports = Admin;

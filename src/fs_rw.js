@@ -81,6 +81,12 @@ function deleteAllUser() {
   return console.log("database deleted succesfully");
 }
 
+//ORDER PROTOTYPE
+
+function readAllOrders() {
+  dataBase.orderDATABASE.filter(orders => console.log(orders));
+}
+
 module.exports = {
   addToDataBase,
   readSingleUser,
@@ -89,5 +95,6 @@ module.exports = {
   deleteAllUser,
   deleteUser,
   updateUser,
-  getUserId
+  getUserId,
+  readAllOrders
 };

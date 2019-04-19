@@ -1,34 +1,49 @@
 {
-  "userDATABASE": [
-    {
-      "name": "Jane Doe",
-      "email": "crathdfaiag@gmail.com",
-      "password": "freedom123",
-      "user_id": 1,
-      "is_admin": true
-    },
-    {
-      "name": "John",
-      "email": "johnfg@gmail.com",
-      "password": "sword32fish",
-      "user_id": 2,
-      "is_admin": true
-    }
-  ],
-  "orderDATABASE": [
-    {
-      "user_id": 2,
-      "order_id": 2,
-      "timeOfOrder": "8:22 AM",
-      "dateOfOrder": "Fri-Apr-2019",
-      "orders": ["banana", "rice", "iphone"]
-    },
-    {
-      "user_id": 3,
-      "order_id": 3,
-      "timeOfOrder": "8:26 AM",
-      "dateOfOrder": "Fri-Apr-2019",
-      "orders": ["banana", "rice", "iphone"]
-    }
-  ]
+    "userDATABASE": [
+        {
+            "name": "Jane Doe",
+            "email": "crathdfaiag@gmail.com",
+            "password": "freedom123",
+            "user_id": 1,
+            "is_admin": true
+        },
+        {
+            "name": "John",
+            "email": "johnfg@gmail.com",
+            "password": "sword32fish",
+            "user_id": 2,
+            "is_admin": true
+        },
+        {
+            "name": "donald Doe",
+            "email": "cratg@gmail.com",
+            "password": "om123",
+            "user_id": 3,
+            "is_admin": true
+        }
+    ],
+    "orderDATABASE": [
+        {
+            "user_id": 2,
+            "order_id": 2,
+            "timeOfOrder": "8:22 AM",
+            "dateOfOrder": "Fri-Apr-2019",
+            "orders": [
+                "banana",
+                "rice",
+                "iphone"
+            ]
+        },
+        {
+            "user_id": 3,
+            "order_id": 3,
+            "timeOfOrder": "8:26 AM",
+            "dateOfOrder": "Fri-Apr-2019",
+            "orders": [
+                "banana",
+                "rice",
+                "iphone"
+            ]
+        }
+    ]
 }

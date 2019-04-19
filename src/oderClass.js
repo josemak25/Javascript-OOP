@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const { addToDataBase } = require("./fs_rw");
+const { addToDataBase, readAllOrders } = require("./fs_rw");
 
 function Orders(products, id) {
   const url = fs.readFileSync("./db/dataBase.json", "utf8");
@@ -55,6 +55,10 @@ function Orders(products, id) {
 
 Orders.prototype.createOrder = function(products) {
   new Orders(products, id);
+};
+
+Orders.prototype.readAllOrders = () => {
+  readAllOrders();
 };
 
 module.exports = Orders;
