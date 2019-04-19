@@ -101,12 +101,27 @@ function deleteOrder(orderId) {
   console.log(dataBase.orderDATABASE);
   console.log("order deleted succesful...");
   writeBackTodb();
-  // return;
 }
 
 function deleteAllOrder() {
   dataBase.orderDATABASE = [];
   console.log("order database deleted succesfully");
+  writeBackTodb();
+}
+
+function updateOrderDetails(prodToUpdate, newProduct, orderId) {
+  const order = dataBase.orderDATABASE.find(order => order.order_id == orderId);
+  if (order) {
+    order.orders.map((item, index) => {
+      if (item == prodToUpdate) {
+        order.orders[index] = newProduct;
+      }
+    });
+  } else {
+    return console.log("FALSE, order not found");
+  }
+
+  console.log("Order updated succesfully");
   writeBackTodb();
 }
 
@@ -122,5 +137,6 @@ module.exports = {
   readAllOrders,
   readSingleOrder,
   deleteOrder,
-  deleteAllOrder
+  deleteAllOrder,
+  updateOrderDetails
 };

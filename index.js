@@ -8,7 +8,7 @@ const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
 // const thankGod = new User("thankGod", "preyfyg@gmail.com", "sw2fish");
 // const grey = new User("grey", "grey123g@gmail.com", "sw2fish");
 
-jane.deleteAllOrder();
+jane.updateOrder("gari", "pancake sugar", 4);
 // jane.deleteUser(1);
 // success.makeNewOrder("banana", "rice", "iphone");
 // thankGod.makeNewOrder("banana", "rice", "iphone");

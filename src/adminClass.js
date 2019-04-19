@@ -40,4 +40,7 @@ Admin.prototype.deleteAllOrder = () => {
   Orders.prototype.deleteAllOrder();
 };
 
+User.prototype.updateOrder = function(prodToUpdate, newProduct, orderId) {
+  Orders.prototype.updateOrderDetails(prodToUpdate, newProduct, orderId);
+};
 module.exports = Admin;

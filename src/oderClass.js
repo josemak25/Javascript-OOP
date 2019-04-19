@@ -5,7 +5,8 @@ const {
   readAllOrders,
   readSingleOrder,
   deleteOrder,
-  deleteAllOrder
+  deleteAllOrder,
+  updateOrderDetails
 } = require("./fs_rw");
 
 function Orders(products, id) {
@@ -78,4 +79,13 @@ Orders.prototype.deleteOrder = orderId => {
 Orders.prototype.deleteAllOrder = () => {
   deleteAllOrder();
 };
+
+Orders.prototype.updateOrderDetails = function(
+  prodToUpdate,
+  newProduct,
+  orderId
+) {
+  updateOrderDetails(prodToUpdate, newProduct, orderId);
+};
+
 module.exports = Orders;
