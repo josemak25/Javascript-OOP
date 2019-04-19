@@ -96,9 +96,7 @@ function readSingleOrder(orderId) {
 
 function deleteOrder(orderId) {
   const order = dataBase.orderDATABASE.find(order => order.order_id == orderId);
-  console.log(order);
   dataBase.orderDATABASE.splice(orderId - 1, 1);
-  console.log(dataBase.orderDATABASE);
   console.log("order deleted succesful...");
   writeBackTodb();
 }
