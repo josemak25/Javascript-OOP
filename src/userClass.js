@@ -27,8 +27,9 @@ function User(name, email, password) {
     }
   }
 
-  for (users of dataBase[dbPath]) {
-    if (users.email === data.email) return console.log("User already exits");
+  for (users of dataBase.userDATABASE) {
+    if (users.email === userData.email)
+      return console.log("User already exits");
   }
 
   if (userData.constructor === User) userData.is_admin = false;

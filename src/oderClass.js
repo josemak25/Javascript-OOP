@@ -1,8 +1,13 @@
-const { addToDataBase, getUserId } = require("./fs_rw");
+const fs = require("fs");
+
+const { addToDataBase } = require("./fs_rw");
 
 function Orders(...products) {
-  this.user_id = getUserId(this.email);
-  this.order_id = 1;
+  const url = fs.readFileSync("./db/dataBase.json", "utf8");
+  const dataBase = JSON.parse(url);
+
+  this.user_id = 1;
+  this.order_id = generateOrderId();
   this.timeOfOrder = productDate();
   this.dateOfOrder = productDate("date");
   this.orders = products;
@@ -30,7 +35,17 @@ function Orders(...products) {
       datePicker.getFullYear();
       return `${weekday}-${months}-${datePicker.getFullYear()}`;
     } else {
-      return `${datePicker.getHours()}-${datePicker.getMinutes()}-${datePicker.getSeconds()} GMT+0100`;
+      return `${datePicker.getHours()}:${datePicker.getMinutes()} AM`;
+    }
+  }
+
+  function generateOrderId() {
+    if (dataBase.orderDATABASE.length < 1) {
+      return 1;
+    } else {
+      return (
+        dataBase.orderDATABASE[dataBase.orderDATABASE.length - 1].order_id + 1
+      );
     }
   }
 
