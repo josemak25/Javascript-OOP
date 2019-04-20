@@ -90,9 +90,8 @@ function deleteUser(userID) {
 
 function deleteAllUser() {
   dataBase.userDATABASE = [];
-  console.log("user database deleted succesfully");
   writeBackTodb();
-  return;
+  return "user database deleted succesfully";
 }
 
 //ORDER PROTOTYPE

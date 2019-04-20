@@ -42,6 +42,31 @@ describe("Testing admin class methods", () => {
     expect(jane.readAllOrders()).toEqual(dataOfOrders);
   });
 
+  test("Admin method for single order", () => {
+    const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
+    jane.saveUser();
+    expect(jane.readSingleOrder(1)).toEqual({
+      dateOfOrder: "Sat 20 Apr 2019",
+      order_id: 1,
+      orders: ["Rice", "Iphone"],
+      timeOfOrder: "9:29 PM",
+      user_id: 4
+    });
+  });
+
+  test("Admin method for single order that dosent exit in database", () => {
+    const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
+    jane.saveUser();
+    expect(jane.readSingleOrder(4)).toEqual("FALSE, order not found");
+  });
+
+  test("Admin method for single order that input is not a number", () => {
+    const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
+    jane.saveUser();
+    expect(jane.readSingleOrder()).toEqual("Input must be a number");
+    expect(jane.readSingleOrder("")).toEqual("Input must be a number");
+  });
+
   //   test("Admin method to delete a user", () => {
   //     const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
   //     jane.saveUser();

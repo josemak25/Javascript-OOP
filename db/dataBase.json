@@ -36,6 +36,13 @@
       "timeOfOrder": "9:29 PM",
       "dateOfOrder": "Sat 20 Apr 2019",
       "orders": ["Rice", "Iphone"]
+    },
+    {
+      "user_id": 4,
+      "order_id": 2,
+      "timeOfOrder": "12:03 AM",
+      "dateOfOrder": "Sat 20 Apr 2019",
+      "orders": ["Samsung", "Iphone"]
     }
   ]
 }

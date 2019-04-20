@@ -29,7 +29,11 @@ Admin.prototype.readAllOrders = () => {
 };
 
 Admin.prototype.readSingleOrder = orderId => {
-  return Orders.prototype.readSingleOrder(orderId);
+  if (typeof orderId === "number") {
+    return Orders.prototype.readSingleOrder(orderId);
+  } else {
+    return "Input must be a number";
+  }
 };
 
 Admin.prototype.deleteOrder = orderId => {
