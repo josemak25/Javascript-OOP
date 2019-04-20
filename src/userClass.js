@@ -7,51 +7,43 @@ const {
   readSingleUser,
   searchUser,
   updateUser,
-  getUserId
+  getUserId,
+  generateUserId
 } = require("./fs_rw");
 
 function User(name, email, password) {
-  const url = fs.readFileSync("./db/dataBase.json", "utf8");
-  const dataBase = JSON.parse(url);
-
   (this.name = name), (this.email = email), (this.password = password);
   this.user_id = generateUserId();
   this.is_admin = true;
-  const userData = this;
+}
 
-  function generateUserId() {
-    if (dataBase.userDATABASE.length < 1) {
-      return 1;
-    } else {
-      return (
-        dataBase.userDATABASE[dataBase.userDATABASE.length - 1].user_id + 1
-      );
-    }
-  }
+User.prototype.saveUser = function() {
+  const url = fs.readFileSync("./db/dataBase.json", "utf8");
+  const dataBase = JSON.parse(url);
+  const userData = this;
 
   if (
     typeof userData.name !== "string" ||
     typeof userData.email !== "string" ||
     typeof userData.password !== "string"
   ) {
-    return console.log("Only string fields are allowed");
+    return "Only string fields are allowed";
   } else if (
     userData.name == "" ||
     userData.email == "" ||
     userData.password == ""
   ) {
-    return console.log("All fields are required");
+    return "All fields are required";
   }
 
   for (users of dataBase.userDATABASE) {
-    if (users.email === userData.email)
-      return console.log("User already exits");
+    if (users.email === userData.email) return "User already exits";
   }
 
   if (userData.constructor === User) userData.is_admin = false;
 
   addToDataBase(userData, "userDATABASE");
-}
+};
 
 User.prototype.readUserById = function(user_id) {
   readSingleUser(user_id);

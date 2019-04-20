@@ -13,6 +13,16 @@ function writeBackTodb() {
   );
 }
 
+//GENERATE USERID
+
+function generateUserId() {
+  if (dataBase.userDATABASE.length < 1) {
+    return 1;
+  } else {
+    return dataBase.userDATABASE[dataBase.userDATABASE.length - 1].user_id + 1;
+  }
+}
+
 function addToDataBase(data, dbPath) {
   // CHECK FOR DATABSE PATH BEFORE ADDING TO DATABSE
   if (dbPath === "userDATABASE") {
@@ -144,5 +154,6 @@ module.exports = {
   readSingleOrder,
   deleteOrder,
   deleteAllOrder,
-  updateOrderDetails
+  updateOrderDetails,
+  generateUserId
 };

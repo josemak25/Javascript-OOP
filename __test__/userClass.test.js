@@ -24,5 +24,13 @@ describe("Testing user class methods", () => {
     );
   });
 
-  test()
+  test("Testing user class method if the input of a user on creation is valid", () => {
+    const jane = new User(12, "jose", "");
+    expect(jane.saveUser()).toEqual("Only string fields are allowed");
+  });
+
+  test("Testing user class method if the input of a user is empty", () => {
+    const jane = new User("", "", "");
+    expect(jane.saveUser()).toMatch("All fields are required");
+  });
 });
