@@ -2,7 +2,7 @@ const fs = require("fs");
 const url = fs.readFileSync("./db/dataBase.json", "utf8");
 const dataBase = JSON.parse(url);
 const User = require("../src/userClass");
-const { getUserId } = require("./fs_rw");
+const { getUserId } = require("../src/fs_rw");
 
 //Testing UserClass and UserClass methods
 describe("Testing user class methods", () => {
@@ -83,30 +83,31 @@ describe("Testing user class methods", () => {
     );
   });
 
-  test("Update User details", () => {
+  test("Update User details test with invalid cases of input", () => {
     const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
     expect(jane.updateUserDetail(56, "76")).toMatch(
       "Only string fields are allowed"
     );
   });
 
-  test("Update User details", () => {
+  test("Update User details test with empty fields", () => {
     const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
     expect(jane.updateUserDetail("", "", "")).toMatch(
       "All fields are required"
     );
   });
 
+  test("Update User details with same fields and no changes", () => {
+    const jane = new User("richmond", "richmang@gmail.com", "omen");
+    expect(
+      jane.updateUserDetail("richmond", "richmang@gmail.com", "omen")
+    ).toMatch("No changes where made..");
+  });
+
   test("Update User details", () => {
     const jane = new User("richmond", "richmang@gmail.com", "omen");
-    jane.updateUserDetail("richard", "richardTutu@gmail.com", "omen2324");
-    const id = getUserId(this.email);
-    expect(jane.readUserById(id)).toEqual({
-      name: "richard",
-      email: "richardTutu@gmail.com",
-      password: "omen2324",
-      user_id: id,
-      is_admin: false
-    });
+    expect(
+      jane.updateUserDetail("richard", "richardTutu@gmail.com", "omen2324")
+    ).toEqual("User updated succesfully");
   });
 });

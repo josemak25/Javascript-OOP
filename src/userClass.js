@@ -62,7 +62,7 @@ User.prototype.updateUserDetail = function(name, email, password) {
     return "All fields are required";
   } else {
     const user_id = getUserId(this.email);
-    updateUser(name, email, password, (id = user_id));
+    return updateUser(name, email, password, (id = user_id));
   }
 };
 
