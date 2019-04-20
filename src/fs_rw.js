@@ -50,13 +50,12 @@ function readSingleUser(userID) {
 }
 
 function searchUser(username) {
-  const user = dataBase.userDATABASE.filter(user => user.name == username);
-  user.length < 1
-    ? console.log("FALSE, user not found")
-    : console.log(
-        `Found ${user.length} users with the name ${username}`,
-        ...user
-      );
+  const user = dataBase.userDATABASE.find(user => user.name == username);
+  if (user) {
+    return user;
+  } else {
+    return "FALSE, no user by such name is not found";
+  }
 }
 
 function updateUser(name, email, password, id) {

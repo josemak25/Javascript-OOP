@@ -53,4 +53,31 @@ describe("Testing user class methods", () => {
     const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
     expect(jane.readUserById(8)).toMatch("FALSE, user not found");
   });
+
+  test("Search a user by name with an invalid input of number", () => {
+    const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
+    expect(jane.searchUser("bryan finch")).toEqual({
+      name: "bryan finch",
+      email: "bryanFinchg@gmail.com",
+      password: "om123",
+      user_id: 3,
+      is_admin: true
+    });
+  });
+
+  test("Search a user by name with an invalid input of number", () => {
+    const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
+    expect(jane.searchUser(5)).toMatch("Search field must be a string");
+  });
+
+  test("Search a user by name with an invalid input of empty string", () => {
+    const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
+    expect(jane.searchUser("")).toMatch("Please input a name to search");
+  });
+  test("Search a user by name with a name that dosent exit in database", () => {
+    const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
+    expect(jane.searchUser("Jospeh")).toMatch(
+      "FALSE, no user by such name is not found"
+    );
+  });
 });

@@ -57,6 +57,11 @@ User.prototype.updateUserDetail = function(name, email, password) {
 };
 
 User.prototype.searchUser = username => {
+  if (username.length <= 1) {
+    return "Please input a name to search";
+  } else if (typeof username !== "string") {
+    return "Search field must be a string";
+  }
   return searchUser(username);
 };
 
