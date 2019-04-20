@@ -5,7 +5,7 @@
       "email": "cratrideag@gmail.com",
       "password": "om123",
       "user_id": 1,
-      "is_admin": true
+      "is_admin": false
     },
     {
       "name": "victor",
@@ -19,7 +19,14 @@
       "email": "bryanFinchg@gmail.com",
       "password": "om123",
       "user_id": 3,
-      "is_admin": true
+      "is_admin": false
+    },
+    {
+      "name": "richmond",
+      "email": "richmang@gmail.com",
+      "password": "omen",
+      "user_id": 4,
+      "is_admin": false
     }
   ],
   "orderDATABASE": []

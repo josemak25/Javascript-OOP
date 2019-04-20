@@ -2,11 +2,13 @@ const fs = require("fs");
 const url = fs.readFileSync("./db/dataBase.json", "utf8");
 const dataBase = JSON.parse(url);
 const User = require("../src/userClass");
+const { getUserId } = require("./fs_rw");
 
 //Testing UserClass and UserClass methods
 describe("Testing user class methods", () => {
   test("should create new user when userClass is called", () => {
     const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
+    jane.saveUser();
     expect(dataBase.userDATABASE).toContainEqual(
       expect.objectContaining({
         email: "cratrideag@gmail.com",
@@ -61,7 +63,7 @@ describe("Testing user class methods", () => {
       email: "bryanFinchg@gmail.com",
       password: "om123",
       user_id: 3,
-      is_admin: true
+      is_admin: false
     });
   });
 
@@ -79,5 +81,32 @@ describe("Testing user class methods", () => {
     expect(jane.searchUser("Jospeh")).toMatch(
       "FALSE, no user by such name is not found"
     );
+  });
+
+  test("Update User details", () => {
+    const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
+    expect(jane.updateUserDetail(56, "76")).toMatch(
+      "Only string fields are allowed"
+    );
+  });
+
+  test("Update User details", () => {
+    const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
+    expect(jane.updateUserDetail("", "", "")).toMatch(
+      "All fields are required"
+    );
+  });
+
+  test("Update User details", () => {
+    const jane = new User("richmond", "richmang@gmail.com", "omen");
+    jane.updateUserDetail("richard", "richardTutu@gmail.com", "omen2324");
+    const id = getUserId(this.email);
+    expect(jane.readUserById(id)).toEqual({
+      name: "richard",
+      email: "richardTutu@gmail.com",
+      password: "omen2324",
+      user_id: id,
+      is_admin: false
+    });
   });
 });

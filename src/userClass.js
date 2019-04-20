@@ -52,8 +52,18 @@ User.prototype.readUserById = function(user_id) {
 };
 
 User.prototype.updateUserDetail = function(name, email, password) {
-  const user_id = getUserId(this.email);
-  updateUser(name, email, password, (id = user_id));
+  if (
+    typeof name !== "string" ||
+    typeof email !== "string" ||
+    typeof password !== "string"
+  ) {
+    return "Only string fields are allowed";
+  } else if (name == "" || email == "" || password == "") {
+    return "All fields are required";
+  } else {
+    const user_id = getUserId(this.email);
+    updateUser(name, email, password, (id = user_id));
+  }
 };
 
 User.prototype.searchUser = username => {

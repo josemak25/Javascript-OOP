@@ -51,24 +51,20 @@ function readSingleUser(userID) {
 
 function searchUser(username) {
   const user = dataBase.userDATABASE.find(user => user.name == username);
-  if (user) {
-    return user;
-  } else {
-    return "FALSE, no user by such name is not found";
-  }
+  return user ? user : "FALSE, no user by such name is not found";
 }
 
 function updateUser(name, email, password, id) {
   const user = dataBase.userDATABASE.find(user => user.user_id == id);
   if (user.name == name && user.email == email && user.password == password) {
-    return console.log("No changes where made..");
+    return "No changes where made..";
   } else {
     user.name = name;
     user.email = email;
     user.password = password;
   }
-  console.log("User updated succesfully");
   writeBackTodb();
+  return "User updated succesfully";
 }
 
 //ADMIN PROTOTYPE FUNCTIONS
