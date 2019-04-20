@@ -67,6 +67,33 @@ describe("Testing admin class methods", () => {
     expect(jane.readSingleOrder("")).toEqual("Input must be a number");
   });
 
+  test("Admin method for update order that input is not a valid type", () => {
+    const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
+    jane.saveUser();
+    expect(jane.updateOrder("", "")).toEqual(
+      "Product fields must be a string and ID a number"
+    );
+  });
+
+  test("Admin method for update order that order id is not found", () => {
+    const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
+    jane.saveUser();
+    expect(jane.updateOrder("Samsung", "Plantain", 4)).toEqual(
+      "FALSE, order not found"
+    );
+  });
+
+  test("Admin method for update order, when order id is found", () => {
+    const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
+    jane.saveUser();
+    expect(jane.updateOrder("Samsung", "Plantain", 2)).toEqual({
+      user_id: 4,
+      order_id: 2,
+      timeOfOrder: "12:03 AM",
+      dateOfOrder: "Sat 20 Apr 2019",
+      orders: ["Plantain", "Iphone"]
+    });
+  });
   //   test("Admin method to delete a user", () => {
   //     const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
   //     jane.saveUser();

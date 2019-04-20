@@ -133,12 +133,12 @@ function updateOrderDetails(prodToUpdate, newProduct, orderId) {
       if (item == prodToUpdate) {
         order.orders[index] = newProduct;
         writeBackTodb();
-        return "Order updated succesfully";
       }
     });
   } else {
     return "FALSE, order not found";
   }
+  return order;
 }
 
 module.exports = {

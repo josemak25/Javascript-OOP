@@ -45,6 +45,16 @@ Admin.prototype.deleteAllOrder = () => {
 };
 
 User.prototype.updateOrder = function(prodToUpdate, newProduct, orderId) {
-  return Orders.prototype.updateOrderDetails(prodToUpdate, newProduct, orderId);
+  if (
+    typeof prodToUpdate === "string" &&
+    typeof newProduct === "string" &&
+    typeof orderId === "number"
+  ) {
+    return Orders.prototype.updateOrderDetails(
+      prodToUpdate,
+      newProduct,
+      orderId
+    );
+  } else return "Product fields must be a string and ID a number";
 };
 module.exports = Admin;
