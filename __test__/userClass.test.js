@@ -97,17 +97,22 @@ describe("Testing user class methods", () => {
     );
   });
 
-  test("Update User details with same fields and no changes", () => {
-    const jane = new User("richmond", "richmang@gmail.com", "omen");
-    expect(
-      jane.updateUserDetail("richmond", "richmang@gmail.com", "omen")
-    ).toMatch("No changes where made..");
-  });
+  // test("Update User details with same fields and no changes", () => {
+  //   const jane = new User("richmond", "richmang@gmail.com", "omen");
+  //   expect(
+  //     jane.updateUserDetail("richmond", "richmang@gmail.com", "omen")
+  //   ).toMatch("No changes where made..");
+  // });
 
-  test("Update User details", () => {
-    const jane = new User("richmond", "richmang@gmail.com", "omen");
-    expect(
-      jane.updateUserDetail("richard", "richardTutu@gmail.com", "omen2324")
-    ).toEqual("User updated succesfully");
+  // test("Update User details", () => {
+  //   const jane = new User("richmond", "richmang@gmail.com", "omen");
+  //   expect(
+  //     jane.updateUserDetail("richard", "richardTutu@gmail.com", "omen2324")
+  //   ).toEqual("User updated succesfully");
+  // });
+
+  test("Make order as a user with no input fileds", () => {
+    const jane = new User("richard", "richardTutu@gmail.com", "omen2324");
+    expect(jane.makeNewOrder()).toEqual("Please make an order");
   });
 });

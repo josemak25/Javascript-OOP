@@ -61,23 +61,23 @@ function Orders(products, id) {
 }
 
 Orders.prototype.createOrder = function(products) {
-  new Orders(products, id);
+  return new Orders(products, id);
 };
 
 Orders.prototype.readAllOrders = () => {
-  readAllOrders();
+  return readAllOrders();
 };
 
 Orders.prototype.readSingleOrder = orderId => {
-  readSingleOrder(orderId);
+  return readSingleOrder(orderId);
 };
 
 Orders.prototype.deleteOrder = orderId => {
-  deleteOrder(orderId);
+  return deleteOrder(orderId);
 };
 
 Orders.prototype.deleteAllOrder = () => {
-  deleteAllOrder();
+  return eleteAllOrder();
 };
 
 Orders.prototype.updateOrderDetails = function(
@@ -85,7 +85,7 @@ Orders.prototype.updateOrderDetails = function(
   newProduct,
   orderId
 ) {
-  updateOrderDetails(prodToUpdate, newProduct, orderId);
+  return updateOrderDetails(prodToUpdate, newProduct, orderId);
 };
 
 module.exports = Orders;

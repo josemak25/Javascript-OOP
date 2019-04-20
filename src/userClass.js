@@ -77,7 +77,10 @@ User.prototype.searchUser = username => {
 
 User.prototype.makeNewOrder = function(...products) {
   const user_id = getUserId(this.email);
-  Orders.prototype.createOrder(products, (id = user_id));
+  if (products.length < 1) {
+    return "Please make an order";
+  }
+  return Orders.prototype.createOrder(products, (id = user_id));
 };
 
 module.exports = User;

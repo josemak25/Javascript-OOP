@@ -27,10 +27,10 @@ function addToDataBase(data, dbPath) {
   // CHECK FOR DATABSE PATH BEFORE ADDING TO DATABSE
   if (dbPath === "userDATABASE") {
     dataBase.userDATABASE.push(data);
-    console.log("user account created succesfully");
+    return "user account created succesfully";
   } else {
     dataBase.orderDATABASE.push(data);
-    console.log("orders succesfully made");
+    return "orders succesfully made";
   }
 
   //WRITE BACK OUR DATA TO DATABSE

@@ -1,33 +1,33 @@
 {
-   "userDATABASE": [
-      {
-         "name": "donald Doe",
-         "email": "cratrideag@gmail.com",
-         "password": "om123",
-         "user_id": 1,
-         "is_admin": false
-      },
-      {
-         "name": "victor",
-         "email": "zinag@gmail.com",
-         "password": "om123",
-         "user_id": 2,
-         "is_admin": false
-      },
-      {
-         "name": "bryan finch",
-         "email": "bryanFinchg@gmail.com",
-         "password": "om123",
-         "user_id": 3,
-         "is_admin": false
-      },
-      {
-         "name": "richard",
-         "email": "richardTutu@gmail.com",
-         "password": "omen2324",
-         "user_id": 4,
-         "is_admin": false
-      }
-   ],
-   "orderDATABASE": []
+  "userDATABASE": [
+    {
+      "name": "donald Doe",
+      "email": "cratrideag@gmail.com",
+      "password": "om123",
+      "user_id": 1,
+      "is_admin": false
+    },
+    {
+      "name": "victor",
+      "email": "zinag@gmail.com",
+      "password": "om123",
+      "user_id": 2,
+      "is_admin": false
+    },
+    {
+      "name": "bryan finch",
+      "email": "bryanFinchg@gmail.com",
+      "password": "om123",
+      "user_id": 3,
+      "is_admin": false
+    },
+    {
+      "name": "richard",
+      "email": "richardTutu@gmail.com",
+      "password": "omen2324",
+      "user_id": 4,
+      "is_admin": false
+    }
+  ],
+  "orderDATABASE": []
 }
