@@ -1,12 +1,26 @@
 {
-   "userDATABASE": [
-      {
-         "name": "donald Doe",
-         "email": "cratrideag@gmail.com",
-         "password": "om123",
-         "user_id": 1,
-         "is_admin": true
-      }
-   ],
-   "orderDATABASE": []
+  "userDATABASE": [
+    {
+      "name": "donald Doe",
+      "email": "cratrideag@gmail.com",
+      "password": "om123",
+      "user_id": 1,
+      "is_admin": true
+    },
+    {
+      "name": "victor",
+      "email": "zinag@gmail.com",
+      "password": "om123",
+      "user_id": 2,
+      "is_admin": false
+    },
+    {
+      "name": "donald Doe",
+      "email": "cratrideag@gmail.com",
+      "password": "om123",
+      "user_id": 3,
+      "is_admin": true
+    }
+  ],
+  "orderDATABASE": []
 }

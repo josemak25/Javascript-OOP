@@ -46,7 +46,7 @@ function getUserId(email) {
 //USER PROTOTYPE FUNCTIONS
 function readSingleUser(userID) {
   const user = dataBase.userDATABASE.find(user => user.user_id == userID);
-  user ? console.log(user) : console.log("FALSE, user not found");
+  return user ? user : "FALSE, user not found";
 }
 
 function searchUser(username) {

@@ -3,14 +3,6 @@ const url = fs.readFileSync("./db/dataBase.json", "utf8");
 const dataBase = JSON.parse(url);
 const User = require("../src/userClass");
 
-const {
-  addToDataBase,
-  readSingleUser,
-  searchUser,
-  updateUser,
-  getUserId
-} = require("../src/fs_rw");
-
 //Testing UserClass and UserClass methods
 describe("Testing user class methods", () => {
   test("should create new user when userClass is called", () => {
@@ -37,5 +29,28 @@ describe("Testing user class methods", () => {
   test("Creating a new user with a mail that matches an exiting user email", () => {
     const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
     expect(jane.saveUser()).toMatch("User already exits");
+  });
+
+  test("Search a user by id ", () => {
+    const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
+    expect(jane.readUserById(2)).toEqual({
+      name: "victor",
+      email: "zinag@gmail.com",
+      password: "om123",
+      user_id: 2,
+      is_admin: false
+    });
+  });
+
+  test("Search a user id with invalid input ", () => {
+    const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
+    expect(jane.readUserById("")).toMatch(
+      "Invalid Input, Input must be a number"
+    );
+  });
+
+  test("Search a user by id ", () => {
+    const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
+    expect(jane.readUserById(8)).toMatch("FALSE, user not found");
   });
 });

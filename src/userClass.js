@@ -46,7 +46,9 @@ User.prototype.saveUser = function() {
 };
 
 User.prototype.readUserById = function(user_id) {
-  readSingleUser(user_id);
+  if (typeof user_id === "number") {
+    return readSingleUser(user_id);
+  } else return "Invalid Input, Input must be a number";
 };
 
 User.prototype.updateUserDetail = function(name, email, password) {
@@ -55,7 +57,7 @@ User.prototype.updateUserDetail = function(name, email, password) {
 };
 
 User.prototype.searchUser = username => {
-  searchUser(username);
+  return searchUser(username);
 };
 
 User.prototype.makeNewOrder = function(...products) {
