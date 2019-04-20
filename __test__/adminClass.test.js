@@ -35,11 +35,11 @@ describe("Testing admin class methods", () => {
     expect(jane.readAllUsers()).toEqual(dataOfUsers);
   });
 
-  test("Admin method to delete all users", () => {
+  test("Admin method to read all orders", () => {
     const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
     jane.saveUser();
     const dataOfOrders = jane.readAllOrders();
-    expect(jane.readAllOrders()).toEqual("dwfd");
+    expect(jane.readAllOrders()).toEqual(dataOfOrders);
   });
 
   //   test("Admin method to delete a user", () => {

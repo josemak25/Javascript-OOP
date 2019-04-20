@@ -98,7 +98,7 @@ function deleteAllUser() {
 //ORDER PROTOTYPE
 
 function readAllOrders() {
-  return dataBase.orderDATABASE.filter(orders => orders);
+  return dataBase.orderDATABASE.find(orders => orders);
 }
 
 function readSingleOrder(orderId) {
