@@ -33,4 +33,9 @@ describe("Testing user class methods", () => {
     const jane = new User("", "", "");
     expect(jane.saveUser()).toMatch("All fields are required");
   });
+
+  test("Creating a new user with a mail that matches an exiting user email", () => {
+    const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
+    expect(jane.saveUser()).toMatch("User already exits");
+  });
 });
