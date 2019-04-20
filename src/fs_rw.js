@@ -27,14 +27,13 @@ function addToDataBase(data, dbPath) {
   // CHECK FOR DATABSE PATH BEFORE ADDING TO DATABSE
   if (dbPath === "userDATABASE") {
     dataBase.userDATABASE.push(data);
+    writeBackTodb();
     return "user account created succesfully";
   } else {
     dataBase.orderDATABASE.push(data);
+    writeBackTodb();
     return "orders succesfully made";
   }
-
-  //WRITE BACK OUR DATA TO DATABSE
-  writeBackTodb();
 }
 
 // UPDATING USER DETAILS ON DB
@@ -69,16 +68,24 @@ function updateUser(name, email, password, id) {
 
 //ADMIN PROTOTYPE FUNCTIONS
 function readAllUser() {
-  dataBase.userDATABASE.filter(users => console.log(users));
+  return dataBase.userDATABASE.filter(users => users);
 }
 
 function deleteUser(userID) {
-  const user = dataBase.userDATABASE.find(user => user.user_id == userID);
-  console.log(user);
-  dataBase.userDATABASE.splice(userID - 1, 1);
-  console.log(dataBase.userDATABASE);
-  console.log("User deleted succesful...");
-  writeBackTodb();
+  let deleteIndex = 0;
+  const user = dataBase.userDATABASE.find((user, index) => {
+    if (user.user_id == userID) {
+      deleteIndex = index;
+      return user;
+    }
+  });
+  if (user) {
+    dataBase.userDATABASE.splice(deleteIndex, 1);
+    writeBackTodb();
+    return "user deleted succesful...";
+  } else {
+    return "FALSE, order not found";
+  }
 }
 
 function deleteAllUser() {
@@ -91,12 +98,12 @@ function deleteAllUser() {
 //ORDER PROTOTYPE
 
 function readAllOrders() {
-  dataBase.orderDATABASE.filter(orders => console.log(orders));
+  return dataBase.orderDATABASE.filter(orders => orders);
 }
 
 function readSingleOrder(orderId) {
   const order = dataBase.orderDATABASE.find(order => order.order_id == orderId);
-  order ? console.log(order) : console.log("FALSE, order not found");
+  return order ? order : "FALSE, order not found";
 }
 
 function deleteOrder(orderId) {
@@ -109,15 +116,15 @@ function deleteOrder(orderId) {
   });
   if (order) {
     dataBase.orderDATABASE.splice(deleteIndex, 1);
-    console.log("order deleted succesful...");
     writeBackTodb();
-  } else return console.log("FALSE, order not found");
+    return "order deleted succesful...";
+  } else return "FALSE, order not found";
 }
 
 function deleteAllOrder() {
   dataBase.orderDATABASE = [];
-  console.log("order database deleted succesfully");
   writeBackTodb();
+  return "order database deleted succesfully";
 }
 
 function updateOrderDetails(prodToUpdate, newProduct, orderId) {
@@ -126,14 +133,13 @@ function updateOrderDetails(prodToUpdate, newProduct, orderId) {
     order.orders.map((item, index) => {
       if (item == prodToUpdate) {
         order.orders[index] = newProduct;
+        writeBackTodb();
+        return "Order updated succesfully";
       }
     });
   } else {
-    return console.log("FALSE, order not found");
+    return "FALSE, order not found";
   }
-
-  console.log("Order updated succesfully");
-  writeBackTodb();
 }
 
 module.exports = {

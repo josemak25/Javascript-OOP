@@ -2,7 +2,6 @@ const fs = require("fs");
 const url = fs.readFileSync("./db/dataBase.json", "utf8");
 const dataBase = JSON.parse(url);
 const User = require("../src/userClass");
-const { getUserId } = require("../src/fs_rw");
 
 //Testing UserClass and UserClass methods
 describe("Testing user class methods", () => {
@@ -114,5 +113,33 @@ describe("Testing user class methods", () => {
   test("Make order as a user with no input fileds", () => {
     const jane = new User("richard", "richardTutu@gmail.com", "omen2324");
     expect(jane.makeNewOrder()).toEqual("Please make an order");
+  });
+
+  test("Make order as a user", () => {
+    const jane = new User("richard", "richardTutu@gmail.com", "omen2324");
+    // jane.makeNewOrder("Rice", "Iphone");
+    expect(Array.isArray(dataBase.orderDATABASE)).toEqual(true);
+    dataBase.orderDATABASE.forEach(order => {
+      // Ensure each order is an object with an exact set of keys
+      expect(typeof order).toEqual("object");
+      expect(Object.keys(order).sort()).toEqual([
+        "dateOfOrder",
+        "order_id",
+        "orders",
+        "timeOfOrder",
+        "user_id"
+      ]);
+      // Validate simple property types.
+      expect(typeof order.dateOfOrder).toEqual("string");
+      expect(typeof order.order_id).toEqual("number");
+      expect(typeof order.timeOfOrder).toEqual("string");
+      expect(typeof order.user_id).toEqual("number");
+
+      // Ensure that the order property is an array of strings.
+      expect(Array.isArray(order.orders)).toEqual(true);
+      order.orders.forEach(item => {
+        expect(typeof item).toEqual("string");
+      });
+    });
   });
 });

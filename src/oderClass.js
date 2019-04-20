@@ -41,7 +41,11 @@ function Orders(products, id) {
       datePicker.getFullYear();
       return `${weekday} ${datePicker.getUTCDate()} ${months} ${datePicker.getFullYear()}`;
     } else {
-      return `${datePicker.getHours()}:${datePicker.getMinutes()} AM`;
+      return datePicker.toLocaleString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true
+      });
     }
   }
 
@@ -77,7 +81,7 @@ Orders.prototype.deleteOrder = orderId => {
 };
 
 Orders.prototype.deleteAllOrder = () => {
-  return eleteAllOrder();
+  return deleteAllOrder();
 };
 
 Orders.prototype.updateOrderDetails = function(

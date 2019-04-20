@@ -13,35 +13,34 @@ Admin.prototype = Object.create(User.prototype);
 Admin.prototype.constructor = Admin;
 
 Admin.prototype.readAllUsers = () => {
-  readAllUser();
+  return readAllUser();
 };
 
 Admin.prototype.deleteUser = user_id => {
-  deleteUser(user_id);
+  return deleteUser(user_id);
 };
 
 Admin.prototype.deleteAllUsers = () => {
-  deleteAllUser();
+  return deleteAllUser();
 };
 
 Admin.prototype.readAllOrders = () => {
-  Orders.prototype.readAllOrders();
+  return Orders.prototype.readAllOrders();
 };
 
 Admin.prototype.readSingleOrder = orderId => {
-  Orders.prototype.readSingleOrder(orderId);
+  return Orders.prototype.readSingleOrder(orderId);
 };
 
 Admin.prototype.deleteOrder = orderId => {
-  Orders.prototype.deleteOrder(orderId);
+  return Orders.prototype.deleteOrder(orderId);
 };
 
 Admin.prototype.deleteAllOrder = () => {
-  Orders.prototype.deleteAllOrder();
+  return Orders.prototype.deleteAllOrder();
 };
 
 User.prototype.updateOrder = function(prodToUpdate, newProduct, orderId) {
-  
-  Orders.prototype.updateOrderDetails(prodToUpdate, newProduct, orderId);
+  return Orders.prototype.updateOrderDetails(prodToUpdate, newProduct, orderId);
 };
 module.exports = Admin;
