@@ -13,13 +13,46 @@ function writeBackTodb() {
   );
 }
 
-//GENERATE USERID
+//GENERATE ORDERID AND USERID
 
-function generateUserId() {
-  if (dataBase.userDATABASE.length < 1) {
+function idGenerator(dataBasePath, id) {
+  if (dataBase[dataBasePath].length < 1) {
     return 1;
   } else {
-    return dataBase.userDATABASE[dataBase.userDATABASE.length - 1].user_id + 1;
+    return dataBase[dataBasePath][dataBase[dataBasePath].length - 1][id] + 1;
+  }
+}
+
+//GENERATE DATE AND TIME FOR PRODUCT
+
+function productDate(param) {
+  const datePicker = new Date();
+  if (param == "date") {
+    const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][
+      datePicker.getDay()
+    ];
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ][datePicker.getMonth()];
+    datePicker.getFullYear();
+    return `${weekday} ${datePicker.getUTCDate()} ${months} ${datePicker.getFullYear()}`;
+  } else {
+    return datePicker.toLocaleString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true
+    });
   }
 }
 
@@ -155,5 +188,9 @@ module.exports = {
   deleteOrder,
   deleteAllOrder,
   updateOrderDetails,
-  generateUserId
+  generateUserId,
+  url,
+  dataBase,
+  idGenerator,
+  productDate
 };

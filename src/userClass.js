@@ -8,18 +8,17 @@ const {
   searchUser,
   updateUser,
   getUserId,
-  generateUserId
+  idGenerator
 } = require("./fs_rw");
 
 function User(name, email, password) {
   (this.name = name), (this.email = email), (this.password = password);
-  this.user_id = generateUserId();
+  this.user_id = idGenerator("userDATABASE", "user_id");
   this.is_admin = true;
 }
 
 User.prototype.saveUser = function() {
-  const url = fs.readFileSync("./db/dataBase.json", "utf8");
-  const dataBase = JSON.parse(url);
+  const { dataBase } = require("./fs_rw");
   const userData = this;
 
   if (
