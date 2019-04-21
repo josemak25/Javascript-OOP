@@ -5,19 +5,19 @@ const User = require("../src/userClass");
 
 //Testing UserClass and UserClass methods
 describe("Testing user class methods", () => {
+  const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
   test("should create new user when userClass is called", () => {
-    const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
     expect(jane.saveUser()).toMatch("user account created succesfully");
   });
 
   test("Testing user class method if the input of a user on creation is valid", () => {
-    const jane = new User(12, "jose", "");
-    expect(jane.saveUser()).toEqual("Only string fields are allowed");
+    const jose = new User(12, "jose", "");
+    expect(jose.saveUser()).toEqual("Only string fields are allowed");
   });
 
   test("Testing user class method if the input of a user is empty", () => {
-    const jane = new User("", "", "");
-    expect(jane.saveUser()).toMatch("All fields are required");
+    const jude = new User("", "", "");
+    expect(jude.saveUser()).toMatch("All fields are required");
   });
 
   test("Creating a new user with a mail that matches an exiting user email", () => {
@@ -26,8 +26,8 @@ describe("Testing user class methods", () => {
   });
 
   test("Search a user by id ", () => {
-    const jane = new User("victor", "zinag@gmail.com", "om123");
-    jane.saveUser();
+    const victor = new User("victor", "zinag@gmail.com", "om123");
+    victor.saveUser();
     expect(jane.readUserById(2)).toEqual({
       name: "victor",
       email: "zinag@gmail.com",
@@ -44,14 +44,14 @@ describe("Testing user class methods", () => {
     );
   });
 
-  test("Search a user by id ", () => {
+  test("Search a user by id that dosen't exist", () => {
     const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
     expect(jane.readUserById(8)).toMatch("FALSE, user not found");
   });
 
   test("Search a user by name with valid input of user name", () => {
-    const jane = new User("bryan finch", "bryanFinchg@gmail.com", "om123");
-    jane.saveUser();
+    const bryan = new User("bryan finch", "bryanFinchg@gmail.com", "om123");
+    bryan.saveUser();
     expect(jane.searchUser("bryan finch")).toEqual({
       name: "bryan finch",
       email: "bryanFinchg@gmail.com",
@@ -92,15 +92,14 @@ describe("Testing user class methods", () => {
   });
 
   test("Make order as a user with no input fileds", () => {
-    const jane = new User("richard", "richardTutu@gmail.com", "omen2324");
-    jane.saveUser();
-    expect(jane.makeNewOrder()).toEqual("Please make an order");
+    const richard = new User("richard", "richardTutu@gmail.com", "omen2324");
+    richard.saveUser();
+    expect(richard.makeNewOrder()).toEqual("Please make an order");
   });
 
   test("Make order as a user", () => {
-    const jane = new User("richard", "richardTutu@gmail.com", "omen2324");
-    jane.saveUser();
-    const orderedStuffs = jane.makeNewOrder("Rice", "Iphone");
+    const richard = new User("richard", "richardTutu@gmail.com", "omen2324");
+    const orderedStuffs = richard.makeNewOrder("Rice", "Iphone");
 
     expect(orderedStuffs).toEqual(orderedStuffs);
 
@@ -130,18 +129,16 @@ describe("Testing user class methods", () => {
   });
 
   test("Update User details with same fields and no changes", () => {
-    const jane = new User("richard", "richardTutu@gmail.com", "omen2324");
-    jane.saveUser();
+    const richard = new User("richard", "richardTutu@gmail.com", "omen2324");
     expect(
-      jane.updateUserDetail("richard", "richardTutu@gmail.com", "omen2324")
+      richard.updateUserDetail("richard", "richardTutu@gmail.com", "omen2324")
     ).toMatch("No changes where made..");
   });
 
   test("Update User details", () => {
-    const jane = new User("richard", "richardTutu@gmail.com", "omen2324");
-    jane.saveUser();
+    const richard = new User("richard", "richardTutu@gmail.com", "omen2324");
     expect(
-      jane.updateUserDetail("richmond", "richmang@gmail.com", "omen")
+      richard.updateUserDetail("richmond", "richmang@gmail.com", "omen")
     ).toEqual("User updated succesfully");
   });
 });
