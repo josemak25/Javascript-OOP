@@ -94,6 +94,31 @@ describe("Testing admin class methods", () => {
       orders: ["Plantain", "Iphone"]
     });
   });
+
+  test("Admin method for delete order that order id is not found", () => {
+    const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
+    jane.saveUser();
+    expect(jane.deleteOrder(4)).toEqual("FALSE, order not found");
+  });
+
+  test("Admin method for delete order that order id is not a number", () => {
+    const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
+    jane.saveUser();
+    expect(jane.deleteOrder("")).toEqual("Input must be of a number type");
+  });
+
+  test("Admin method for delete order that order id is valid and found", () => {
+    const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
+    jane.saveUser();
+    expect(jane.deleteOrder(2)).toEqual("Order deleted succesful...");
+  });
+
+  test("Admin method for delete all orders from DB", () => {
+    const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
+    jane.saveUser();
+    expect(jane.deleteAllOrder()).toEqual("Order database deleted succesfully");
+  });
+
   //   test("Admin method to delete a user", () => {
   //     const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
   //     jane.saveUser();

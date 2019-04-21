@@ -37,7 +37,11 @@ Admin.prototype.readSingleOrder = orderId => {
 };
 
 Admin.prototype.deleteOrder = orderId => {
-  return Orders.prototype.deleteOrder(orderId);
+  if (typeof orderId === "number") {
+    return Orders.prototype.deleteOrder(orderId);
+  } else {
+    return "Input must be of a number type";
+  }
 };
 
 Admin.prototype.deleteAllOrder = () => {

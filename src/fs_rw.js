@@ -116,14 +116,14 @@ function deleteOrder(orderId) {
   if (order) {
     dataBase.orderDATABASE.splice(deleteIndex, 1);
     writeBackTodb();
-    return "order deleted succesful...";
   } else return "FALSE, order not found";
+  return "Order deleted succesful...";
 }
 
 function deleteAllOrder() {
   dataBase.orderDATABASE = [];
   writeBackTodb();
-  return "order database deleted succesfully";
+  return "Order database deleted succesfully";
 }
 
 function updateOrderDetails(prodToUpdate, newProduct, orderId) {
