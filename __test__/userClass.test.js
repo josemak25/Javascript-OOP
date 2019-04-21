@@ -96,20 +96,6 @@ describe("Testing user class methods", () => {
     );
   });
 
-  // test("Update User details with same fields and no changes", () => {
-  //   const jane = new User("richmond", "richmang@gmail.com", "omen");
-  //   expect(
-  //     jane.updateUserDetail("richmond", "richmang@gmail.com", "omen")
-  //   ).toMatch("No changes where made..");
-  // });
-
-  // test("Update User details", () => {
-  //   const jane = new User("richmond", "richmang@gmail.com", "omen");
-  //   expect(
-  //     jane.updateUserDetail("richard", "richardTutu@gmail.com", "omen2324")
-  //   ).toEqual("User updated succesfully");
-  // });
-
   test("Make order as a user with no input fileds", () => {
     const jane = new User("richard", "richardTutu@gmail.com", "omen2324");
     expect(jane.makeNewOrder()).toEqual("Please make an order");
@@ -117,7 +103,10 @@ describe("Testing user class methods", () => {
 
   test("Make order as a user", () => {
     const jane = new User("richard", "richardTutu@gmail.com", "omen2324");
-    // jane.makeNewOrder("Rice", "Iphone");
+    const orderedStuffs = jane.makeNewOrder("Rice", "Iphone");
+
+    expect(orderedStuffs).toEqual(orderedStuffs);
+
     expect(Array.isArray(dataBase.orderDATABASE)).toEqual(true);
     dataBase.orderDATABASE.forEach(order => {
       // Ensure each order is an object with an exact set of keys
@@ -141,5 +130,19 @@ describe("Testing user class methods", () => {
         expect(typeof item).toEqual("string");
       });
     });
+  });
+
+  test("Update User details with same fields and no changes", () => {
+    const jane = new User("richard", "richardTutu@gmail.com", "omen2324");
+    expect(
+      jane.updateUserDetail("richard", "richardTutu@gmail.com", "omen2324")
+    ).toMatch("No changes where made..");
+  });
+
+  test("Update User details", () => {
+    const jane = new User("richard", "richardTutu@gmail.com", "omen2324");
+    expect(
+      jane.updateUserDetail("richmond", "richmang@gmail.com", "omen")
+    ).toEqual("User updated succesfully");
   });
 });

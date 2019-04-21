@@ -17,7 +17,9 @@ Admin.prototype.readAllUsers = () => {
 };
 
 Admin.prototype.deleteUser = user_id => {
-  return deleteUser(user_id);
+  if (typeof user_id === "number") {
+    return deleteUser(user_id);
+  } else return "Input must be a number";
 };
 
 Admin.prototype.deleteAllUsers = () => {

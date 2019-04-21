@@ -119,18 +119,27 @@ describe("Testing admin class methods", () => {
     expect(jane.deleteAllOrder()).toEqual("Order database deleted succesfully");
   });
 
-  //   test("Admin method to delete a user", () => {
-  //     const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
-  //     jane.saveUser();
-  //     jane.readAllUsers();
-  //     const dataOfUsers = jane.deleteUser();
-  //     expect(jane.deleteUser()).toEqual(dataOfUsers);
-  //   });
+  test("Admin method to delete a user by ID when input of ID is invalid", () => {
+    const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
+    jane.saveUser();
+    jane.readAllUsers();
+    expect(jane.deleteUser("")).toEqual("Input must be a number");
+  });
 
-  //   test("Admin method to delete all users", () => {
-  //     const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
-  //     jane.saveUser();
-  //     const dataOfUsers = jane.deleteUser();
-  //     expect(jane.deleteUser()).toEqual(dataOfUsers);
-  //   });
+  test("Admin method to delete a user by ID when input of ID is valid but not found in DB", () => {
+    const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
+    jane.saveUser();
+    expect(jane.deleteUser(10)).toEqual("FALSE, user not found");
+  });
+
+  test("Admin method to delete a user by ID when input of ID is valid and found in DB", () => {
+    const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
+    jane.saveUser();
+    expect(jane.deleteUser(5)).toEqual("User deleted succesful...");
+  });
+
+  test("Admin method to delete all users in DB", () => {
+    const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
+    expect(jane.deleteAllUsers()).toEqual("User database deleted succesfully");
+  });
 });

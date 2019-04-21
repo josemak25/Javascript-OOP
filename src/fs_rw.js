@@ -115,16 +115,16 @@ function deleteUser(userID) {
   if (user) {
     dataBase.userDATABASE.splice(deleteIndex, 1);
     writeBackTodb();
-    return "user deleted succesful...";
   } else {
-    return "FALSE, order not found";
+    return "FALSE, user not found";
   }
+  return "User deleted succesful...";
 }
 
 function deleteAllUser() {
   dataBase.userDATABASE = [];
   writeBackTodb();
-  return "user database deleted succesfully";
+  return "User database deleted succesfully";
 }
 
 //ORDER PROTOTYPE
@@ -188,7 +188,6 @@ module.exports = {
   deleteOrder,
   deleteAllOrder,
   updateOrderDetails,
-  generateUserId,
   url,
   dataBase,
   idGenerator,
