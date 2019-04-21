@@ -52,7 +52,21 @@ describe("Testing admin class methods", () => {
 
   test("Admin method for single order", () => {
     const requestForOrders = jane.readSingleOrder(1);
-    expect(requestForOrders).toEqual(requestForOrders);
+    expect(typeof requestForOrders).toEqual("object");
+    expect(Object.keys(requestForOrders).sort()).toEqual([
+      "dateOfOrder",
+      "order_id",
+      "orders",
+      "timeOfOrder",
+      "user_id"
+    ]);
+
+    // Validate simple property types.
+    expect(typeof requestForOrders.dateOfOrder).toEqual("string");
+    expect(typeof requestForOrders.order_id).toEqual("number");
+    expect(Array.isArray(requestForOrders.orders)).toEqual(true);
+    expect(typeof requestForOrders.timeOfOrder).toEqual("string");
+    expect(typeof requestForOrders.user_id).toEqual("number");
   });
 
   test("Admin method for single order that dosent exit in database", () => {
