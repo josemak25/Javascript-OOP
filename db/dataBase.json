@@ -1,0 +1,41 @@
+{
+  "userDATABASE": [
+    {
+      "name": "donald Doe",
+      "email": "cratrideag@gmail.com",
+      "password": "om123",
+      "user_id": 1,
+      "is_admin": false
+    },
+    {
+      "name": "victor",
+      "email": "zinag@gmail.com",
+      "password": "om123",
+      "user_id": 2,
+      "is_admin": false
+    },
+    {
+      "name": "bryan finch",
+      "email": "bryanFinchg@gmail.com",
+      "password": "om123",
+      "user_id": 3,
+      "is_admin": false
+    },
+    {
+      "name": "richmond",
+      "email": "richmang@gmail.com",
+      "password": "omen",
+      "user_id": 4,
+      "is_admin": false
+    }
+  ],
+  "orderDATABASE": [
+    {
+      "user_id": 4,
+      "order_id": 1,
+      "timeOfOrder": "12:34 AM",
+      "dateOfOrder": "Mon 21 Apr 2019",
+      "orders": ["Rice", "Iphone"]
+    }
+  ]
+}
