@@ -55,7 +55,7 @@ describe("Testing user class methods", () => {
     expect(jane.readUserById(8)).toMatch("FALSE, user not found");
   });
 
-  test("Search a user by name with an invalid input of number", () => {
+  test("Search a user by name with valid input of user name", () => {
     const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
     expect(jane.searchUser("bryan finch")).toEqual({
       name: "bryan finch",
@@ -98,11 +98,13 @@ describe("Testing user class methods", () => {
 
   test("Make order as a user with no input fileds", () => {
     const jane = new User("richard", "richardTutu@gmail.com", "omen2324");
+    jane.saveUser();
     expect(jane.makeNewOrder()).toEqual("Please make an order");
   });
 
   test("Make order as a user", () => {
     const jane = new User("richard", "richardTutu@gmail.com", "omen2324");
+    jane.saveUser();
     const orderedStuffs = jane.makeNewOrder("Rice", "Iphone");
 
     expect(orderedStuffs).toEqual(orderedStuffs);
@@ -134,6 +136,7 @@ describe("Testing user class methods", () => {
 
   test("Update User details with same fields and no changes", () => {
     const jane = new User("richard", "richardTutu@gmail.com", "omen2324");
+    jane.saveUser();
     expect(
       jane.updateUserDetail("richard", "richardTutu@gmail.com", "omen2324")
     ).toMatch("No changes where made..");
@@ -141,6 +144,7 @@ describe("Testing user class methods", () => {
 
   test("Update User details", () => {
     const jane = new User("richard", "richardTutu@gmail.com", "omen2324");
+    jane.saveUser();
     expect(
       jane.updateUserDetail("richmond", "richmang@gmail.com", "omen")
     ).toEqual("User updated succesfully");

@@ -57,7 +57,7 @@ describe("Testing admin class methods", () => {
   test("Admin method for single order that dosent exit in database", () => {
     const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
     jane.saveUser();
-    expect(jane.readSingleOrder(4)).toEqual("FALSE, order not found");
+    expect(jane.readSingleOrder(9)).toEqual("FALSE, order not found");
   });
 
   test("Admin method for single order that input is not a number", () => {
@@ -78,7 +78,7 @@ describe("Testing admin class methods", () => {
   test("Admin method for update order that order id is not found", () => {
     const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
     jane.saveUser();
-    expect(jane.updateOrder("Samsung", "Plantain", 4)).toEqual(
+    expect(jane.updateOrder("Samsung", "Plantain", 9)).toEqual(
       "FALSE, order not found"
     );
   });
@@ -98,7 +98,7 @@ describe("Testing admin class methods", () => {
   test("Admin method for delete order that order id is not found", () => {
     const jane = new Admin("donald Doe", "cratrideag@gmail.com", "om123");
     jane.saveUser();
-    expect(jane.deleteOrder(4)).toEqual("FALSE, order not found");
+    expect(jane.deleteOrder(9)).toEqual("FALSE, order not found");
   });
 
   test("Admin method for delete order that order id is not a number", () => {
