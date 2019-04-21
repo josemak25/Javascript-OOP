@@ -7,14 +7,7 @@ const User = require("../src/userClass");
 describe("Testing user class methods", () => {
   test("should create new user when userClass is called", () => {
     const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
-    jane.saveUser();
-    expect(dataBase.userDATABASE).toContainEqual(
-      expect.objectContaining({
-        email: "cratrideag@gmail.com",
-        name: "donald Doe",
-        password: "om123"
-      })
-    );
+    expect(jane.saveUser()).toMatch("user account created succesfully");
   });
 
   test("Testing user class method if the input of a user on creation is valid", () => {
@@ -33,7 +26,8 @@ describe("Testing user class methods", () => {
   });
 
   test("Search a user by id ", () => {
-    const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
+    const jane = new User("victor", "zinag@gmail.com", "om123");
+    jane.saveUser();
     expect(jane.readUserById(2)).toEqual({
       name: "victor",
       email: "zinag@gmail.com",
@@ -56,7 +50,8 @@ describe("Testing user class methods", () => {
   });
 
   test("Search a user by name with valid input of user name", () => {
-    const jane = new User("donald Doe", "cratrideag@gmail.com", "om123");
+    const jane = new User("bryan finch", "bryanFinchg@gmail.com", "om123");
+    jane.saveUser();
     expect(jane.searchUser("bryan finch")).toEqual({
       name: "bryan finch",
       email: "bryanFinchg@gmail.com",

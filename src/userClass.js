@@ -41,7 +41,7 @@ User.prototype.saveUser = function() {
 
   if (userData.constructor === User) userData.is_admin = false;
 
-  addToDataBase(userData, "userDATABASE");
+  return addToDataBase(userData, "userDATABASE");
 };
 
 User.prototype.readUserById = function(user_id) {
