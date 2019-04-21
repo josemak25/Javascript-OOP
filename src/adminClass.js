@@ -13,34 +13,54 @@ Admin.prototype = Object.create(User.prototype);
 Admin.prototype.constructor = Admin;
 
 Admin.prototype.readAllUsers = () => {
-  readAllUser();
+  return readAllUser();
 };
 
 Admin.prototype.deleteUser = user_id => {
-  deleteUser(user_id);
+  if (typeof user_id === "number") {
+    return deleteUser(user_id);
+  } else return "Input must be a number";
 };
 
 Admin.prototype.deleteAllUsers = () => {
-  deleteAllUser();
+  return deleteAllUser();
 };
 
 Admin.prototype.readAllOrders = () => {
-  Orders.prototype.readAllOrders();
+  return Orders.prototype.readAllOrders();
 };
 
 Admin.prototype.readSingleOrder = orderId => {
-  Orders.prototype.readSingleOrder(orderId);
+  if (typeof orderId === "number") {
+    return Orders.prototype.readSingleOrder(orderId);
+  } else {
+    return "Input must be a number";
+  }
 };
 
 Admin.prototype.deleteOrder = orderId => {
-  Orders.prototype.deleteOrder(orderId);
+  if (typeof orderId === "number") {
+    return Orders.prototype.deleteOrder(orderId);
+  } else {
+    return "Input must be of a number type";
+  }
 };
 
 Admin.prototype.deleteAllOrder = () => {
-  Orders.prototype.deleteAllOrder();
+  return Orders.prototype.deleteAllOrder();
 };
 
 User.prototype.updateOrder = function(prodToUpdate, newProduct, orderId) {
-  Orders.prototype.updateOrderDetails(prodToUpdate, newProduct, orderId);
+  if (
+    typeof prodToUpdate === "string" &&
+    typeof newProduct === "string" &&
+    typeof orderId === "number"
+  ) {
+    return Orders.prototype.updateOrderDetails(
+      prodToUpdate,
+      newProduct,
+      orderId
+    );
+  } else return "Product fields must be a string and ID a number";
 };
 module.exports = Admin;

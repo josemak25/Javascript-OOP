@@ -13,18 +13,60 @@ function writeBackTodb() {
   );
 }
 
+//GENERATE ORDERID AND USERID
+
+function idGenerator(dataBasePath, id) {
+  if (dataBase[dataBasePath].length < 1) {
+    return 1;
+  } else {
+    return dataBase[dataBasePath][dataBase[dataBasePath].length - 1][id] + 1;
+  }
+}
+
+//GENERATE DATE AND TIME FOR PRODUCT
+
+function productDate(param) {
+  const datePicker = new Date();
+  if (param == "date") {
+    const weekday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][
+      datePicker.getDay()
+    ];
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ][datePicker.getMonth()];
+    datePicker.getFullYear();
+    return `${weekday} ${datePicker.getUTCDate()} ${months} ${datePicker.getFullYear()}`;
+  } else {
+    return datePicker.toLocaleString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true
+    });
+  }
+}
+
 function addToDataBase(data, dbPath) {
   // CHECK FOR DATABSE PATH BEFORE ADDING TO DATABSE
   if (dbPath === "userDATABASE") {
     dataBase.userDATABASE.push(data);
-    console.log("user account created succesfully");
+    writeBackTodb();
+    return "user account created succesfully";
   } else {
     dataBase.orderDATABASE.push(data);
-    console.log("orders succesfully made");
+    writeBackTodb();
+    return "orders succesfully made";
   }
-
-  //WRITE BACK OUR DATA TO DATABSE
-  writeBackTodb();
 }
 
 // UPDATING USER DETAILS ON DB
@@ -36,62 +78,64 @@ function getUserId(email) {
 //USER PROTOTYPE FUNCTIONS
 function readSingleUser(userID) {
   const user = dataBase.userDATABASE.find(user => user.user_id == userID);
-  user ? console.log(user) : console.log("FALSE, user not found");
+  return user ? user : "FALSE, user not found";
 }
 
 function searchUser(username) {
-  const user = dataBase.userDATABASE.filter(user => user.name == username);
-  user.length < 1
-    ? console.log("FALSE, user not found")
-    : console.log(
-        `Found ${user.length} users with the name ${username}`,
-        ...user
-      );
+  const user = dataBase.userDATABASE.find(user => user.name == username);
+  return user ? user : "FALSE, no user by such name is not found";
 }
 
 function updateUser(name, email, password, id) {
   const user = dataBase.userDATABASE.find(user => user.user_id == id);
   if (user.name == name && user.email == email && user.password == password) {
-    return console.log("No changes where made..");
+    return "No changes where made..";
   } else {
     user.name = name;
     user.email = email;
     user.password = password;
   }
-  console.log("User updated succesfully");
   writeBackTodb();
+  return "User updated succesfully";
 }
 
 //ADMIN PROTOTYPE FUNCTIONS
 function readAllUser() {
-  dataBase.userDATABASE.filter(users => console.log(users));
+  return dataBase.userDATABASE.filter(users => users);
 }
 
 function deleteUser(userID) {
-  const user = dataBase.userDATABASE.find(user => user.user_id == userID);
-  console.log(user);
-  dataBase.userDATABASE.splice(userID - 1, 1);
-  console.log(dataBase.userDATABASE);
-  console.log("User deleted succesful...");
-  writeBackTodb();
+  let deleteIndex = 0;
+  const user = dataBase.userDATABASE.find((user, index) => {
+    if (user.user_id == userID) {
+      deleteIndex = index;
+      return user;
+    }
+  });
+  if (user) {
+    dataBase.userDATABASE.splice(deleteIndex, 1);
+    writeBackTodb();
+  } else {
+    return "FALSE, user not found";
+  }
+  return "User deleted succesful...";
 }
 
 function deleteAllUser() {
   dataBase.userDATABASE = [];
-  console.log("user database deleted succesfully");
   writeBackTodb();
-  return;
+  return "User database deleted succesfully";
 }
 
 //ORDER PROTOTYPE
 
 function readAllOrders() {
-  dataBase.orderDATABASE.filter(orders => console.log(orders));
+  return dataBase.orderDATABASE.find(orders => orders);
 }
 
 function readSingleOrder(orderId) {
   const order = dataBase.orderDATABASE.find(order => order.order_id == orderId);
-  order ? console.log(order) : console.log("FALSE, order not found");
+  return order ? order : "FALSE, order not found";
 }
 
 function deleteOrder(orderId) {
@@ -104,15 +148,15 @@ function deleteOrder(orderId) {
   });
   if (order) {
     dataBase.orderDATABASE.splice(deleteIndex, 1);
-    console.log("order deleted succesful...");
     writeBackTodb();
-  } else return console.log("FALSE, order not found");
+  } else return "FALSE, order not found";
+  return "Order deleted succesful...";
 }
 
 function deleteAllOrder() {
   dataBase.orderDATABASE = [];
-  console.log("order database deleted succesfully");
   writeBackTodb();
+  return "Order database deleted succesfully";
 }
 
 function updateOrderDetails(prodToUpdate, newProduct, orderId) {
@@ -121,14 +165,13 @@ function updateOrderDetails(prodToUpdate, newProduct, orderId) {
     order.orders.map((item, index) => {
       if (item == prodToUpdate) {
         order.orders[index] = newProduct;
+        writeBackTodb();
       }
     });
   } else {
-    return console.log("FALSE, order not found");
+    return "FALSE, order not found";
   }
-
-  console.log("Order updated succesfully");
-  writeBackTodb();
+  return order;
 }
 
 module.exports = {
@@ -144,5 +187,9 @@ module.exports = {
   readSingleOrder,
   deleteOrder,
   deleteAllOrder,
-  updateOrderDetails
+  updateOrderDetails,
+  url,
+  dataBase,
+  idGenerator,
+  productDate
 };
